@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>dco</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		.s1{
+			position: absolute;
+			width: 80px;
+			height: 120px;
+			background: red;
+			left: 0px;
+			transform: rotate(45deg);
+			transform-origin: right bottom;
+			border-radius: 50px;
+			
+
+		}
+		.s2{
+			position: absolute;
+			width: 80px;
+			height: 120px;
+			background: red;
+			left: 80px;
+			transform: rotate(-45deg);
+			transform-origin: left bottom;
+			border-radius: 50px 50px 0px 0px;	
+		}
+		#box{
+			/*border: 1px solid black;*/
+			width: 160px;
+			height: 150px;
+			position: relative;
+			margin: 200px auto;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+	<span class="s1"></span>
+	<span class="s2"></span>
+	</div>
+
+</body>
+</html>

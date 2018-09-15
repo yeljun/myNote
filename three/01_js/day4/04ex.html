@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ddd</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function fun1() {
+			var arr = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','0','1','2','3','4','5','6','7','8','9',];
+			var arr1 = [];//是arr数组的下标
+
+			for (var i = 0;i<4;i++){
+				arr1[arr1.length]=parseInt(Math.random()*arr.length);
+			}
+			
+			var yz = []//返回给用户的数组
+			
+			for (var i=0;i<arr1.length;i++){
+				yz[yz.length]=arr[arr1[i]]
+			}
+			
+			var str = yz.join("")
+			var input = prompt("String:"+str)
+			if (input==str) {
+				console.log("你好！")
+			}
+			
+		}
+	</script>
+	<button onclick="fun1();">aaa</button>
+
+</body>
+</html>

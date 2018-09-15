@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>doc</title>
+</head>
+<body>
+	<script>
+		var sg = prompt("身高m:")
+		var tz = prompt("体重kg:")
+		var BMI = tz / (sg * sg)
+		var isRun= BMI<18.5
+		var isRun1=BMI>23.9
+		var a= isRun ? console.log("偏瘦",BMI) : isRun1 ? console.log("偏胖",BMI):console.log("正常",BMI);
+	</script>
+</body>
+</html>

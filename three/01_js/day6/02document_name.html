@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>dddd</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<input type="radio" name="gender" value="man">男
+	<input type="radio" name="gender" value="wman">女
+	<button onclick="select()">选中</button>
+	<br>
+	<input type="checkbox" name="hobby" value="吃">吃<br>
+	<input type="checkbox" name="hobby" value="喝">喝<br>
+	<input type="checkbox" name="hobby" value="玩">玩<br>
+	<input type="checkbox" name="hobby" value="乐">乐<br>
+	<input type="checkbox" name="hobby" value="全选" id="getAll" onclick="checkAll()">全选
+	
+	<script src="../day5/common.js"></script>
+	<script type="text/javascript">
+		function checkAll() {
+			var isChk = $("getAll").checked;
+			var getAllarry =document.getElementsByName("hobby");
+			
+			for (var i = 0; i < getAllarry.length; i++) {
+				getAllarry[i].checked = isChk;
+			}
+		}
+
+
+
+		function select() {
+			var zt = false;
+			var gen = document.getElementsByName("gender");
+			for (var i = 0; i < gen.length; i++) {
+				if (gen[i].checked) {
+					zt=true;
+					break;
+				}
+			}
+			if (zt){
+				alert("aaaa")
+			} else{
+				alert("忘记选择了,要选择一项")
+			}
+		}
+	</script>
+</body>
+</html>

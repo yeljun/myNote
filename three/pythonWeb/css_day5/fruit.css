@@ -1,0 +1,72 @@
+/* Çå³ýÄ¬ÈÏÑùÊ½ ,»ù±¾ÑùÊ½Í³Ò»ÉèÖÃ*/
+body,ul,ol,h1,h2,h3,h4,h5,h6,p{
+	margin:0;
+	padding:0;
+}
+ul,ol{
+	list-style:none;
+}
+a{
+	text-decoration:none;
+	color:#999;
+}
+/* ÎÄ×ÖÓë¿éµÄ¶ÔÆë·½Ê½ */
+img,input{
+	vertical-align:bottom;
+}
+/* Ò³Ãæ»ù´¡ÑùÊ½ÉèÖÃ */
+body{
+	font-family:"Microsoft YaHei",sans-serif;/* Î¢ÈíÑÅºÚ£¬³ÄÏß×ÖÌå */
+	font-size:12px;
+	color:#999;
+}
+/* 3.1µ¼º½À¸ÖÆ×÷ ,Í³Ò»ÉèÖÃÍâÎ§½á¹¹µÄ¿í¶È¼°¶ÔÆë·½Ê½*/
+#nav,#banner,#commend,#main{
+	width:990px;
+	margin:0 auto;
+}
+#nav{
+	height:30px;
+	background:#eee;
+	line-height:30px;
+}
+#nav .nav_right{
+	float:right;
+}
+#nav .nav_right li{
+	float:left;
+	padding:0 5px;
+}
+/* Ð¡Êú¸Ü */
+#nav .nav_right li b{
+	border-left:2px solid #999;
+	margin-right:10px;
+}
+#nav .nav_right a:hover{
+	color:#f6ab00;
+	text-decoration:underline;
+}
+/* ×ó²àµ¼º½ */
+/* »ñÈ¡Ö±½Ó×ÓÔªËØ */
+#nav .nav_left>li{
+	float:left;
+	padding-left:10px;
+}
+#nav .nav_left>li>u{
+	display:inline-block;
+	width:0;
+	height:0;
+	border:6px solid transparent;
+	border-top:6px solid black;
+	position:relative;
+	top:4px;
+}
+#nav .nav_left a:hover{
+	color:#64a131
+}
+#nav .nav_left .select{
+	display:none;
+}
+#nav .nav_left .first:hover .select{
+	display:block;
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>year</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<script>
+		var num = window.prompt("请输入一个数字：")
+		// var a = (num % 4== 0 && num % 100 != 0 || num % 400 == 0);
+		// console.log(a)
+
+		a_num=num.charCodeAt()
+		var zt = ( a_num>=48 && a_num<=57);
+		var Kw = (a_num>=65 && a_num<=90);
+		var lw = (a_num>=97 && a_num<=122);
+		var zw = (a_num>=19968 && a_num<=40869);
+		console.log(a_num)
+
+		console.log("是数字吗？",zt)
+		console.log("是小写英文吗？",lw)
+		console.log("是大写英文吗？",Kw)
+		console.log("是中文吗？",zw)
+	</script>
+
+</body>
+</html>

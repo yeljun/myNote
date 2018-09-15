@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ddd</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<button id="btn">动态绑定事件</button>
+	<button onclick="btnClick(event)">点个哦</button>
+	<script src="../day5/common.js"></script>
+	<script type="text/javascript">
+		/*
+		event表示的是该是将对应的时间对象
+		event是由网页自动创建的但需要在调用事件
+		*/
+		function btnClick(event) {
+			console.log(event)
+		}
+		window.onload = function () {
+			$("btn").onclick = function (event) {
+				var x = event.offsetX;
+				var y = event.offsetY;
+				alert(x,y);
+			}
+		}
+	</script>
+</body>
+</html>

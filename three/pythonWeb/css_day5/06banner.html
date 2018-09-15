@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>doc</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		 #banner{
+		 	width: 800px;
+		 	margin: 0 auto;
+		 	position: relative;
+
+		 }
+		 .picther{
+		 	width: 800px;
+		 	height: 400px;
+		 	background: green;
+		 }
+		 /*取消列表的默认样式*/
+		 ul{
+		 	margin: 0;
+		 	padding: 0;
+		 	list-style: none;
+		 	/*设置绝对定位*/
+		 	position: absolute;
+		 	bottom: 10px;
+		 	right: 20px;
+
+		 }
+		/* li元素共行显示*/
+		li{
+			float: left;
+			width: 30px;
+			height: 30px;
+			text-align: center;
+			line-height: 30px;
+			margin: 0 10px;
+			background: white;
+			border-radius: 50%;
+		}
+		.first{
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="banner">
+		<div class="picther"></div>
+		<ul>
+			<li class="first"><a href="#">1</a></li>
+			<li><a href="#">2</a></li>
+			<li><a href="#">3</a></li>
+			<li><a href="#">4</a></li>
+		</ul>
+	</div>
+</body>
+</html>

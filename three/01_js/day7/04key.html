@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>dddd</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	用户名
+	<input type="text" name="uname" id="uname">
+	<script src="../day5/common.js"></script>
+	<script type="text/javascript">
+		window.onload = function () {
+			// $("uname").onkeydown = function (event) {
+			// 	if (event.which >=65 && event.which<=90) {
+			// 		return true;
+			// 	}
+			// 	return false;
+			// }
+			// $("uname").onkeypress = function (event) {
+			// 	if (event.which>=48 && event.which<=57) {
+			// 		console.log(event)
+			// 	}
+			// }
+			$("uname").onkeyup = function (event) {
+				alert(this.value)
+			}
+		}
+	</script>
+</body>
+</html>

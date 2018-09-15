@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>dddd</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		#bb{
+			width: 410px;
+			height: 210px;
+			position: absolute;
+		}
+		#main{
+			width: 200px;
+			height: 200px;
+			background-color: green;
+			border: 1px solid red;
+			float: left;
+			
+
+		}
+		#right{
+			width: 200px;
+			height:200px;
+			background-color: orange;
+			display: none;
+			position: relative;
+			top:0px;
+			left: 200px;
+			
+		}
+	</style>
+</head>
+<body>
+	<div id="bb">
+		<div id="main">
+		</div>
+		<div id="right">	
+		</div>
+	</div>
+	
+	<script src="../day5/common.js"></script>
+	<script type="text/javascript">
+		window.onload = function () {
+			$("main").onmouseover = function () {
+				$("right").style.display = "block";
+			}
+			$("main").onmouseout = function () {
+				$("right").style.display = "none";
+			}
+			$("main").onmousemove = function (event) {
+				var x = event.offsetX;
+				var y = event.offsetY;
+				$("right").innerHTML = x+":"+y;
+
+			}
+		}
+	</script>
+
+</body>
+</html>

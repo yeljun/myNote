@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>dco</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<p>
+		用户名称：<input type="text" name="uname" id="uname" placeholder="6-18:">
+		<button onclick="yanZ()">验证</button>
+	</p>
+	<p id="jg">
+	</p>
+	<script src="common.js"></script>
+	<script type="text/javascript">
+		// function yanZ() {
+		// 	var uname = document.getElementById("uname").value;
+		// 	// alert(uname)
+		// 	var xs = document.getElementById("jg");
+			
+		// 	if (uname.length>=6 && uname.length<=18) {
+		// 		xs.innerText = "通过";
+		// 	}else{
+		// 		xs.innerText="用户名称不符合规范";
+		// 	}
+		//	}
+		// function yanZ() {
+		// 	//在DOM中允许直接使用元素id进行元素进行操作
+		// 	// 但此方法并不是特别通用
+		// 	// 建议：使用document.getElementById()
+		// 	console.log(uname.value)
+		// }
+		function yanZ() {
+			var val = $("uname").value
+			console.log(val)
+		}
+		
+
+	</script>
+</body>
+</html>

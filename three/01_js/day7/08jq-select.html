@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ddd</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+
+	</ul>
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+
+	</ul>
+	<button onclick="btnFilter()">基本过滤选择器</button>
+	<script src="jquery-1.11.3.js"></script>
+	<script type="text/javascript">
+		function btnFilter() {
+			// $("#list li").css("color","red");
+
+			//只匹配第一个li
+			// $("#list li:first").css("color","red");
+
+			//list中除了一个以外的元素
+			// $("#list li:not(:first)").css("color","red");
+
+			//各行变色
+			// $("#list li:even").css("color","red");
+			// $("#list li:odd").css("color","green");
+			$("ul li:first").css("color","red");
+		}
+	</script>
+</body>
+</html>

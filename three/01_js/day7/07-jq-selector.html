@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>dddd</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<h3>今夜死</h3>
+	<p>窗前明月光</p>
+	<p>意识地上霜</p>
+	<p>剧透王明月</p>
+	<p>低头思故乡</p>
+	<button onclick="getBrother()">相邻兄弟选择器</button>
+	<button onclick="getAllP()">获取所有的p</button>
+	<script src="jquery-1.11.3.js"></script>
+	<script type="text/javascript">
+		function getBrother() {
+			//h3的相邻p元素
+			// $("h3+p").css("color","red")
+			//每个p元素响铃的p元素
+			// $("p+p").css("color","red");
+			// console.log($("p+p"));
+			//获取h3后面通用元素的选择器
+			$("h3~p").css("color","red");
+		}
+		// function getAllP() {
+		// 	var $p = $("p");
+		// 	// //将$p中所有的元素文本颜色变为红色
+		// 	// $p.css("color","red");
+		// 	$p.css({
+		// 		"color":"#ff0",
+		// 		"background":"orange",
+		// 		"font-size":"18px",
+		// 		"font-weight":"bold"
+		// 	})
+
+
+		// 	// var parr = document.getElementsByTagName("p")
+		// 	// for (var i = 0; i < parr.length; i++) {
+		// 	// 	parr[i].style.color = "red";
+		// 	// }
+		// }
+	</script>
+
+</body>
+</html>

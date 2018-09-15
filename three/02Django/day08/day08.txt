@@ -1,0 +1,117 @@
+1.forms模块
+	1，forms的改机处理
+		将models和Forms结合到一起使用
+		将Forms中的类和Models中的类关联到一起，实现属性的共享
+
+		1.在Forms.py中创建class，继承自forms.MidelsForm
+		2.创建内部类Meta，关联Form和Model
+			属性
+				1.model：指定要关联的内部类是谁，
+				2.fields：指定从Model中取哪些字段取生成控件
+					1，取值 "__all__",全部属性都要生成控件
+					2，取值 为列表，声明允许生成控件的属性名称
+				3.labels 每个属性关联的label，取值为字典
+					labels={
+						'属性名':'label文本',
+						'属性名2':'label文本2'，
+						... ...
+					}
+	2.内置小部件
+		1.什么是小部件
+			小部件（widget），表示的是生成到页面的控件的类型以及其他的html属性
+		2,常用的小部件
+			1.TextInput：type="text"
+			2.NumberInput:type='number'
+			3.PasswordInput : type = 'password'
+			4.EmailInput:type='email'
+			5.UrlInput:type='url'
+			6.HiddenInput:type='hidden'
+			7.CheckboxInput:type='checkbox'
+			8.Textarea : <Textarea></Textarea>
+			9.Select:<Select></Select>
+		3.小部件的使用
+			1.继承自forms.Form
+				基本版
+					只指定控件的类型
+					属性=forms.CharField(
+						label='标签',
+						widget=forms.小部件类型
+					)
+				高级版
+					指定控件类型之外还允许设置html属性
+					属性 = form.CharField(
+						label='标签',
+						widget=forms.小部件类型(
+							attrs={
+								'html属性名':'属性值'，
+							}
+						)
+					)
+			2.继承自forms.ModelForm
+				class Widget2Form(form.ModelForm):
+					class Meta:
+						model = Users
+						fields = "__all__"
+						labels =[
+							'属性1'：'标签1',
+							'属性2'：'标签2'，
+						]
+						widgets={
+							'属性1'：forms.小部件类型(attrs={}),
+							'属性2'：forms.小部件类型(attrs={}),
+						}
+2.cookies
+	1.什么是cookies
+		cookies是一种数据存储的技术
+		允许将一段文本保存在客户端上（浏览器）的一种技术，并可以长时间保存
+	2.cookies的使用场合
+		1，记住密码
+		2.保存搜索的关键词
+	3.Django中使用cookie
+		1.设置cookies的值（将数据保存到客户端 ）
+			语法：
+				响应对象.set_cookie(key,value,expires)
+					key:cookie的名字
+					value：cookie的值
+					expire：保存时间，以s为单位
+				ex
+					响应对象.set_cookie('uname','zsf',60*60*24*266)
+			1.不使用模板 (HttpResponse)
+				res=HttpResponse('ok')
+				res.set_cookie('key','value',expires)
+				return res
+			2.使用模板（render）
+				resp=render(request,'xxx.html',locals())
+				resp.set_cookie('key','value',expires)
+				return resp
+			3.重定向（HttpResponseRedirect/redirect）
+			resp=HttpResponseRedirect/redirect ('/地址/')
+			resp.set_cookie('key','value','expires')
+			return resp
+		2.获取cookies的值（将数据从客户端取出来）
+			通过request.COOKIES 获取当前站点下所有的cookie的信息
+3.session - 会话
+	1.什么是session
+		session（会话），实际上就是在服务器上为每个浏览器开辟一段空间，用于保存相关的请求信息
+	2.session的使用场合
+		session也是为了存储数据而存在的
+		通常会不服务器端经常要用到的数据保存进去
+	3.Django中使用session
+		1.设置session的值
+			request.session['key']=value
+			request.session.set_expiry(time):设置session的过期时间，如果设置为0的话则表示关闭浏览器session就失效
+		2.获取session的值，
+			request.session['key']
+			request.session.get('key')
+		3.删除session的值
+			del request.session['key']
+	4.在settings.py中，有关session的设置
+		1.SESSION_COOKIE_AGE
+			作用设置sessionid在cookies中的保存时长
+			ex
+				SESSION_COOKIE_AGE=60*60*24
+		2.SESSION_EXPIRE_AT_BROWSER_CLOSE
+			作用：设置关闭浏览器时则清空服务器上对应的session空间
+			ex：
+				SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+

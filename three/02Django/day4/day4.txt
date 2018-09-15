@@ -1,0 +1,171 @@
+1.模型 - Models
+	1.根据数据库中数据表的结构创建出来的class.每张表对应到编程语言中就是一个class，表中的每一个列到编程语言中就是class中的一个属性
+	2，创建和使用模型 - ORM
+		ORM：Objiect Relational Mapping
+		简称：ORM O/RM,O/R Mapping
+		中文：对象关系映射
+		1.三大特征：
+			1.数据表到类class的映射
+				允许将数据表（table） 自动 生成一个类（class）
+				允许将类class 自动 生成一个数据表（Table）
+				（Navicate for mysql）
+			2，数据类型的映射
+				允许将表中字段的数据类型 自动 映射成编程语言中对应的数据类型
+				允许将编程语言中的数据类型 自动 映射成表中字段对应的数据类型
+			3.关系映射
+				允许将表与表之间的关系 自动 映射成类与类之间的关系
+				允许将类与类之间的关系 自动 映射成表与表之间的关系
+		2.ORM的优点：
+			1.提高了开发效率，能够自东完成表与表之间的映射
+			2.可以省略庞大的数据访问，即便不用sql编码，也能完成数据库的crud操作
+		3.创建和配置数据库的问题
+			1.创建数据路（支持中文）
+				create database 数据库名 default charset utf8 collate utf8_general_ci;
+			2Django中数据库的配置数据的信息
+				在settings.py中哦诶之数据库的信息
+				DATABASES = {
+					'default':{
+						'ENGIN':'...',
+						'NAME':'...',
+					}
+				}
+				连接mysql数据库的配置
+					1.ENGIN:连接到数据库的引擎(驱动程序)
+						'django.db.backends.mysql'
+					2.NAME:要连接的数据库的名称
+					3.USER:用户名称，通常为root
+					4.PASSWORD:密码
+					5.HOST:要连接的主机（ip地址）
+					6.PORT:指定端口号
+						mysql：3306
+				注意：Django中要连接mysql数据的话要依赖于MySQLdb
+				通过pyMySQL解决该问题
+					pip3 install pymysql==0.7.11(以上的版本)
+				在主项目目录中的__init__.py：
+					import pymysql
+					pymysql.install_as_MySQLdb()
+		4.数据库的同步操作
+			1. ./manage.py makemigrations
+				作用：将每个应用下的models.py文件生成一个数据库的中间文件，并将中间文件保存在migrations的目录中
+			2. ./manage.py migrate
+				作用：将每个应用下的migrations目录中的中间文件同步到数据库中
+	3.编写models
+		1.注意：
+			1.Models中的每个class都称为模型类（model）或实体类（Entry）	
+				实体：表示数据库中表中的一条记录
+				实体完整性：约束表中的记录不完全重复
+			2.Models中的每个类都必须继承自 models.Model
+		2.举例子
+			在index应用中的models.py中
+			from Django.db import models
+			#创建键一个实体类Publisher 表示出版社的信息，属性如下：
+			#1.name：出版社的名称（varchar，string）
+			#2.address：出版社的地址（varcha，string）
+			#3.city：出版社所在的城市
+			#4.country：出版社的国家
+			#5.wensite: 出版社的网址
+			class Publisher(models.Models):
+				name = models.CharField(max_length=30)
+				address = models.CharField(max_length=50)
+				city = models.CharField(max_length=20)
+				country = models.CharField(max_length=20)
+				website = models.URLField()
+		3.Django中的Models的语法：
+			语法：
+				class ClassName(models.Model):
+					属性 = models.字段类型(字段选项)
+			字段类型：映射到数据库表中的数据类型
+				charField---varchar
+			字段选项：对生成的字段的说明信息
+				max_length=30
+			字段类型（field type）
+				1.BooleanField()
+				2.CharField()
+				3.DateField()
+				4.DateTimeField()
+				5.DecimaField()
+					money = models.DecimalField(max_digits=7,decimal_places=2)
+				6.EmailField()
+					#存电子邮件地址 --varchar
+				7.FloatField()
+				8.ImageField()
+					#存放图片的路径 -varchar
+					uimage = models.ImageField（upload_to ='images/users/'）
+				9.IntegerField()
+				10.URLField()
+					#存网址---varchar
+				11.TextField()
+					#存大量数据 ---text
+			字段选项（Field Option）
+				1.default
+					当前属性（字段）指定默认值
+				2.null
+					指定当前属性（字段）的值是否允许为空，默认为False表示不允许为空
+				3. db_colnum
+					指定当前属性（字段）对应到数据库的列名，如果不指定则采用属性名作为列名
+				练习：
+					1.在models.py中追加2个class
+						1.author---作者
+							1.name--姓名
+							2。age--年龄
+							3.email--邮箱（允许为空）
+						2.Book---图书
+							1.title--书名
+							2.publicate_date -出版时间
+					2，生成日志文件，在同步会数据库
+				4.相关之指令
+					1.数据的版本切换
+						1. ./manage.py migrate  执行所有应用中的最新的版本的数据库中间的文件
+						2. ./manage.py migrate 应用名称 版本号
+							./manage.py migrate index 0003
+					2.通过数据库自动导出models
+						./manage.py inspectdb >文件名.py
+2.模型中的 CRUD
+	1.通过ORM向数据库中增加数据
+		1.Entry.objects.create(属性=值，属性=值)
+			返回值：创建好的实体
+		2.创建一个models对象，并通过save（）完成增加
+			obj = Entry（属性=值，属性=值）
+			obj.save()
+		3.使用字典构建对象，并调用其save（）完成增加
+			dic ={
+				'属性':'值1',
+				'属性2':'值2',
+			}
+			obj =Entry(**dic)
+			obj.save()
+		练习：使用三种方式，分别向_index_book,index_publisher,增加三条数据
+	2.查询数据（重难点）
+		通过Entry。Object调用查询接口
+		1.基本查询操作
+			语法：all()
+			用法：Entry.Object.all()
+			返回QuerySet（查询结果集，是一个封装了若干对象的列表）
+		2。查询指定列的操作
+			语法：values('列1','列2',...)
+			用法：Entry.objects.values('列1','列2'...)
+			返回值：QuerySet
+			注意：values（）可以在所有查询返回QuerySet的方法后面
+			Author.objects.values('name','age')
+			Author.objects.all().values('name','age')
+		3.查询指定列的操作：
+			values_list()
+			用法：Entry.objects.values_list()
+			返回：QuerySet，是一个有若干元组所组成的列表
+		4.对查询数据进行排序
+			语法：order_by()
+			用法：Entry.objects.order_by("列1",'列2'...)
+				默认是升序排序，列名前加"-"则表示该列降序排序
+		5.对条件取反
+			用法:exclude()
+			用法：Entry.objects.exclude(条件)
+		作业：从author中取出所有的数据，并显示在模板中（table）
+			姓名 年龄 邮箱 操作
+			               删除 修改
+
+
+
+
+
+
+

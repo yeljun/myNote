@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ddd</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		#d1{
+			width: 400px;
+			height: 400px;
+			background: red;
+			border: 1px solid transparent;
+		}
+		#d2{
+			width: 300px;
+			height: 300px;
+			background: yellow;
+			margin: 50px auto;
+			border: 1px solid transparent;
+		}
+		#d3{
+			width: 200px;
+			height: 200px;
+			background: pink;
+			margin: 50px auto;
+		}
+	</style>
+</head>
+<body>
+	<div id="d1">
+		<div id="d2">
+			<div id="d3"></div>
+		</div>
+	</div>
+	<script src="../day5/common.js"></script>
+	<script type="text/javascript">
+		window.onload = function () {
+			$("d1").onclick = function () {
+				alert("点击了d1");
+			}
+			$("d2").onclick = function () {
+				alert("点击了d2");
+				//阻止事件冒泡
+				event.stopPropagation();
+			}
+			$("d3").onclick = function (event) {
+				alert("点击了d3");
+				//阻止事件冒泡
+				event.stopPropagation();
+			}
+
+		}
+	</script>
+
+</body>
+</html>

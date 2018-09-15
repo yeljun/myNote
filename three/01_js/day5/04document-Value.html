@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>value</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<p>
+		用户名称：<input type="text" name="uname" id="uname">
+	</p>
+	
+	<p>
+		<button onclick="getUname()">">获取/设置文本框的值"</button>
+	</p>
+	<script type="text/javascript">
+			function getUname() {
+				//通过id=uname 得到input元素
+				var uname = document.getElementById("uname")
+				//获取或设置uname的value的值
+				// console.log(uname.value)
+				uname.value = "动态设置文本"
+			}
+	</script>
+</body>
+</html>

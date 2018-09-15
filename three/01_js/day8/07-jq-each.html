@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ddd</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<div id="main">
+		<p>a</p>
+		<p>b</p>
+		<p>c</p>
+		<p>d</p>
+	</div>
+	<button id="btnShow">显示</button>
+	<script src="../day7/jquery-1.11.3.js"></script>
+	<script type="text/javascript">
+		$(function () {
+			$("#btnShow").click(function () {
+
+				// //$pArr是jq数组
+				// var $pArr = $("#main>p")
+				// for (var i = 0; i < $pArr.length; i++) {
+				// 	console.log($($pArr[i]).html());
+				// }
+				// console.log($("#main>p").html());
+				//$pArr是jq数组
+				var $pArr = $("#main>p")
+				$pArr.each(function(i,obj){
+					console.log("i",i)
+					console.log("obj",obj.html())
+					console.log("----------")
+				})
+			})
+			
+		})
+	</script>
+
+</body>
+</html>

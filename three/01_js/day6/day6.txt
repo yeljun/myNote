@@ -1,0 +1,114 @@
+1.查询节点
+	1，根据id查询
+		document.getElementById();
+		根据节点的层级关系查询节点
+		1.parentNode属性
+			返回当前节点的父节点元素
+		2.childNodes属性
+			返回当前节点的所有子元素数组
+		3.children属性
+			返回当前节点的所有子元素素组（元素节点）
+		4.nextSibling属性
+			获取当前节点的下一兄弟节点（最多只能找一个）
+		5.nextElementSibling属性
+			获取当前节点的下一个元素兄弟节点
+		6.previousSibling
+			获取上一个兄弟节点
+		7.previousElementSibling
+			获取上一个元素节	
+	2.通过标签名查询节点 - 返回数组
+		document|elem.getElementsByTagName("标签名")
+		dcoument:整个文档内查找
+		elem：某个元素内查找
+	3.通过元素的name属性值查询节点
+		语法：document.getElementsName("name的属性值")
+		返回值：包含指定name属性值的元素的数组
+		练习：
+			创建一个网页，包含多个单选按钮
+			2创建一个普通按钮
+			3.单机普通按钮的时候
+			   多个单选按钮中比必须有一个被选中
+	4.通过元素的class值属性查询节点
+		语法：document|elem.getElementsByClassName("class");
+		返回值：返回包含指定当clsss属性所有元素
+*****************************************************************
+2.增加节点
+	1.创建元素节点
+		语法：
+		var elem = document.createElement("元素名");
+		eg. var div = document.createElement("div");
+			div.setAttribute("id","container");
+			div.innerHTML="动态创建的文本"
+	2.增加节点到网页
+		1.document.body.appendChild();
+			向body中追加elem的新元素
+		2.parentNode.appendChild(elem);
+			向parentNode内部追加新元素
+		3.parentNode.insertBefore(newElem,oldElem)
+			将newElem元素插入到parentNode中的oldElem元素之前
+****************************************************************
+3.删除节点
+	在DOM中，删除节点的行为只能有父元素发起
+	语法：parentNode.removeChild(elem);
+		输出parentNode中的elem元素
+****************************************************************
+4.事件
+	1.通常都是由用户的行为来激发的操作
+	2.触发事件的行为
+		所有的事件在绑定时，必须加on
+		1.鼠标事件
+			1.click 事件
+				当鼠标单击元素时触发该事件
+			2.mouseover事件
+				当鼠标移入进元素时的事件
+			3.mouseout事件
+				当鼠标移出元素时的事件
+			4.mousemove事件
+				当鼠标在元素内移动时的事件
+		2，键盘事件
+			1.keyDown 事件
+				当键位按下时所激发的事件
+			2.keyPress 事件
+				当键位按下时所激发的事件
+			3.keyUp事件
+				当键位抬起时所激发的事件
+		3，元素的状态改变事件
+			1.load事件
+				当元素加载完成时所触发的事件（body）
+			2.change事件
+				向选项改变时所触发的事件(select)
+			3.focus 事件
+				当元素获取焦点时所触发的事件（文本框类）
+			4.blur 事件
+			    当元素失去焦点时所触发的事件（文本框类）
+			5.sublimit事件
+				当表单被提交时触发的事件(表单)
+	3.绑定事件的方式
+		1.在元素中绑定事件
+			<元素 on事件名=""></元素>
+		2.在js中动态的位元素绑定事件
+			DOM对象.on事件名 = function(){
+				事件操作
+			}
+			var main = document.getElementById("main");
+			main.onclick = funcation(){
+
+			}
+			注意：在js动态绑定事件中，允许使用this来表示触发当前事件的DOM元素
+	4.事件的行为
+		1.状态改变事件
+			1.load 事件
+				通常为body绑定load事件，目的是为了在所有内容都加载完了之后再实现一些初始化的操作
+
+				1.<body onload = "函数()">
+				2.js动态绑定
+					window.onload = funcation(){
+						网页加载完成后要执行的操作
+					}
+			2.submit 事件
+				只有表单被提交时才会被触发
+				注意：该事件需要一个boolean返回值来通知保单是否继续提交。如果返回true.则可以提交表单，否则阻止表单提交
+				js中动态绑定：
+				表单对象.onsubmit = funcation(){
+					return true/false;
+				}

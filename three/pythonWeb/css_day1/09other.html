@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>other selector</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		/*组合选择器*/
+		h1{
+			background-color: red;
+		}
+		p{
+			background-color: green;
+		}
+		div{
+			background-color: pink;
+			width: 500px;
+			height: 300px;
+		}
+		body,h1,p{
+			/*设置外边距*/
+			margin: 0;
+		}
+		.whiteText,span{
+			color: cyan;
+		}
+		ul li{
+			color: green;
+		}
+		/*子代选择器*/
+		div>span{
+			font-size: 24px;
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<h1>学猫叫</h1>
+		<p>我们一起学猫叫</p>
+		<p class="whiteText">西湖美景三月天</p>
+		<span>哈哈哈哈哈</span>
+	</div>
+	<ul>
+		<li>直接子元素</li>
+		<span>直接子元素元素</span>
+		<li>
+			直接子元素
+			<ol>
+				<li>这是间接的子元素</li>
+			</ol>
+		</li>
+	</ul>
+	<!--div>span-->
+	<div>
+		<span>div中的span元素</span>
+		<p>
+			<span>p元素中的span</span>
+		</p>
+	</div>
+
+
+</body>
+</html>

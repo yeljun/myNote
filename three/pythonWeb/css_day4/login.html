@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>doc</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="login.css">
+	
+</head>
+<body>
+	<div id="container">
+		<h2>会员登录</h2>
+		<div class="left">
+			<img src="../html_day1/img/huiyuan.jpg">
+			<a href="#">会员注册></a>
+		</div>
+		<div class="right">
+			<form action="login" method="post">
+				<p>
+					<span class="spanText">手机号</span>
+					<input type="text" name="uphone" class="uText">
+				</p>
+				<p>
+					<span class="spanText">密码</span>
+					<input type="password" name="upwd" class="uText" placeholder="输入6-20位号码字符">
+				</p>
+				<p>
+					<span class="spanText"></span>
+					<span class="isSaved"><input type="checkbox" name="isSaved" checked=>记住密码</span>
+					<span class="forget">
+						<a href="#">忘记密码</a>
+						<a href="#">快捷登录</a>
+					</span>
+				</p>
+				<p>
+					<span class="spanText"></span>
+					<input type="submit" name="login" class="login" value="登录">
+					<input type="button" name="regist" class="regist" value="会员注册">
+				</p>
+			</form>
+		</div>
+	</div>
+	
+
+</body>
+</html>

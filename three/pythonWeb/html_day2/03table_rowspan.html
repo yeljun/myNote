@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>表格合并</title>
+	<meta charset="utf-8">
+</head>
+<body bgcolor="apple">
+	<!--10*6
+	单元格合并，不管是跨行还是跨列，都是对单元格自身td的操作，设置单元格合并之后，注意调整表格的结构
+
+	-->
+	<table width="872px" height="500px" border="1" align="center" cellspacing="0">
+
+		<caption><h1>课表</h1></caption>
+		<tr align="left" bgcolor="#ED7AB1">
+			<!--两个单元格，姓名和班级，出现了跨列合并，每个单元格占据了三列的宽
+			clospan 表示跨列合并，取值为数值，表示夸几列
+			-->
+			<td colspan="3">姓名：</td>
+			<td colspan="3">班级：</td>
+
+		</tr>
+		<tr align="center" bgcolor="#7ECFC9">
+			<td>星期</td>
+			<td>一</td>
+			<td>二</td>
+			<td>三</td>
+			<td>四</td>
+			<td>五</td>
+			
+		
+		</tr>
+		<!--第三行单元格跨行合并-->	
+		<tr align="center" bgcolor="#FFFFFF">
+			<!--rowspan 跨行合并，取值为数值，表示跨几行-->
+			<td rowspan="4" width="145" height="50" bgcolor="#9A61A8">上午</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			
+		</tr>
+		<tr align="center" bgcolor="#FFFFFF">
+			
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			
+		</tr>
+		<tr align="center" bgcolor="#FFFFFF">
+			
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			
+		</tr>
+		<tr align="center" bgcolor="#FFFFFF">
+			
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			
+		</tr>
+		<tr align="center">
+			<td colspan="6" bgcolor="#6EBE41">午休</td>
+			
+		</tr>
+		<tr align="center" bgcolor="#FFFFFF">
+			
+			<td rowspan="3" bgcolor="#F69DA1">下午</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+
+			
+		</tr>
+		<tr align="center" bgcolor="#FFFFFF">
+			
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			
+		</tr>
+		<tr align="center" bgcolor="#FFFFFF">
+			
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			
+		</tr>
+
+
+
+
+
+	</table>
+
+</body>
+</html>

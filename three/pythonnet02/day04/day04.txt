@@ -1,0 +1,74 @@
+day04笔记
+1，作业
+	1.见maoyantop100.py
+csv 模块使用流程
+	1.python 语句打开csv文件
+	  with open("测试.csv",'a') as f:
+	  	pass
+	2初始化写入对象
+		writer 方法：writer = csv.writer(f)
+	3写入数据
+		writerow()方法：writer.writerow([])
+Xpath
+	在xml文档指那个查找信息的语言，同样使用于html文档的检索
+	2，Xpath辅助作用
+		1.Chrome插件：Xpath Helper
+		打开关闭：Ctrl+Shift+X
+		2.Firefox插件：XPath checker
+		3.XPath表达式编辑工具：XMLQuire
+	3.XPath匹配规则
+		1.匹配演示
+			1.查找bookstore下面的所有节点
+		2选取节点
+			/:从根节点开始选取
+			//从文档中的查找某个节点 //price
+			@:选取某个节点的属性 //title[@lang="en"]
+								//book/title[@lang="en"]
+								//book/title[@lang="en"]
+		3.使用
+			1.选取1个节点：//title[@lang="en"]
+			2.选取N个节点：//title[@lang]
+			3.选取节点属性值：//title/@lang
+		4.匹配多路径
+			1.符号：|
+			2，示例
+				获取book节点下的title和price节点
+				//book/title |//book/price
+		5，函数
+			contains()：匹配1个属性值中包含某些字符串的节点
+3.解析html源码
+	1。lxml库：解析html或者是xml解析库
+		安装
+			conda install lxml
+			pip3 install lxml
+		卸载 uninstall 或者是remove 或则是autoremove
+	2.使用流程
+		1.利用lxml库的etree模块构建解析对象
+		2.解析对象调用XPath工具定位节点信息
+
+	3.使用示例：
+		1.导入，模块 from lxml import etree
+		2.创建    解析对象：parseHtml = etree.HTML(html)
+		3.调用xpath进行解析：r_list = parseHtml.xpath（xpath表达式）
+		##只要调用了xpath，则结果一定是列表
+	4，案例 百度贴吧中的帖子图片
+		2.思路：
+			1.先获取到主页的url：猫 校花 下一页：url规律
+			2，获取某个贴标每个帖子的url
+			3，对每个帖子发请求，获取帖子里所有图片的url
+			4，对图片的url发请求：以web的方式写入本地文件
+		3，获取某个贴吧的url
+			url = http://tieba.baidu.com/f?kw=猫&pg=10
+4.ProxyBasicAuthHandler私密代理Handler处理器
+	1.密码管理器使用流程
+		1.创建密码管理器对象
+			pwd = urllib.request.HTTPPasswordMgrWithDefaultRealm()
+		2.添加私密代理用户名。密码，ip地址，端口信息
+			pwd.add_password(None,"ip:端口","用户名","密码")
+	2.urllib.request.ProxyBasicAuthHandler(“密码管理器对象”)
+
+
+
+
+
+

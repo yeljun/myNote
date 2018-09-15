@@ -1,0 +1,91 @@
+/*1，清除默认样式*/
+body,ul,ol,h1,h2,h3,h4,h5,h6,p{
+	margin: 0;
+	padding: 0;
+}
+/*取消项目符号*/
+ul,ol{
+	list-style: none;
+}
+/*取消下划线*/
+a{
+	text-decoration: none;
+	color: #999;
+}
+img,input{
+	vertical-align: bottom;
+}
+
+/*2，页面基础样式设计*/
+body{
+	font-family: "Microsoft YaHei",sans-serif;
+	font-size: 12px;
+	color: #999;
+}
+#nav,#banner,#commend,#main{
+	width:990px;
+	margin:0 auto;
+}
+#nav{
+	height:30px;
+	background:#eee;
+	line-height:30px;
+}
+#nav .nav_right{
+	float:right;
+}
+#nav .nav_right li{
+	float:left;
+	padding:0 5px;
+}
+#nav .nav_right li b{
+	border-left:2px solid #999;
+	margin-right:10px;
+}
+#nav .nav_right a:hover{
+	color:#f6ab00;
+	text-decoration:underline;
+}
+
+/*********主体部分**************/
+#main>p{
+	border-top: 1px solid #ccc;
+	margin-top: 25px;
+	padding-top: 15px;
+	margin-bottom: 10px;
+}
+#main>p>a{
+	color: #333;
+	float: right;
+}
+#main>p>img{
+	width: 356px;
+}
+/*商品展示*/
+#main .item{
+	float: left;
+	margin-right: 10px;
+	width: 190px;
+
+
+}
+#main .item>.proImg{
+	overflow: hidden;
+}
+#main .item>.proImg>img{
+	width: 190px;
+	height: 190px;
+	transition: all .3s;
+}
+#main .item>.proImg>img:hover{
+	transform: scale(1.1);
+}
+#main .item>p{
+	margin-bottom: 3px;
+	margin-top: 5px;
+}
+
+#main .item>p>img{
+	float: right;
+
+}

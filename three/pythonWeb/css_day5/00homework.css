@@ -1,0 +1,28 @@
+#main>p{
+	border-top: 1px solid #ccc;
+	padding-top: 15px;
+	margin-top: 25px;
+	margin-bottom: 10px;
+}
+#main>p a{
+	float: right;
+	color: #333;
+	text-decoration: none;
+}
+#main .item{
+	float: left;
+	margin-right: 10px;
+}
+#main .item>img{
+	width: 190px;
+}
+#main .item>p{
+	margin: 0;
+	color: #555;
+}
+#main .item>p>img{
+	float: right;
+}
+#main .item span{
+	color: #999;
+}

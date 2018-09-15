@@ -1,0 +1,190 @@
+1.jq操作Dom
+	1.基本操作
+		1.html()
+			作用：获取设置jq对象html内容
+					等同于innerHTML
+			ex
+				var $div = $("#main");
+				console.log($div.html());
+				$div.html("动态设置文本");
+		2.text()
+			作用：获取纯文本内容
+			等同于：innerText
+		3.Val()
+			获取或设置标点控件的Value值
+			等同于：value
+	2.属性操作
+		1.attr()
+			作用：读取或设置jqury对象的属性值
+			ex.
+				1.$obj.attr("id");
+					获取$obj对象的id属性
+				2.$obj.attr("id","container")
+					设置$obj对象的id属性为contaner
+		2.removeAttr("attrName")；
+			作用：删除jquery对象的attrName属性
+			ex：
+				$obj.removeAttr("class")
+	3.样式操作
+		1.attr("class","className")
+			使用到jq对象的class属性上
+		2.addClass("className");
+			作用追加className选择器到jq对象class属性后
+			返回值：就是jq对象
+			<div id="obj"></div>
+			var $obj=$("#obj");
+			ex:
+				$obj = $obj.addClass("c1");
+				结果 <div id ="obj" class="c1"></div>
+				$obj = $obj.addClass("c2");
+				结果:<div id ="obj" class="c1 c2"></div>
+
+				以上操作可以简化为：
+				(连缀调用，返回对象是jq对象的时候)
+				$obj.addClass("c1").addClass("c2").html();
+		3.removeClass("className")
+			作用：将className属性值从class属性中移出
+		4.removeClass()
+			作用：清空class属性值
+		5.toggleClass("className")；
+			切换样式：
+				元素如果具备className属性值，则删除
+				元素如果不具备className属性值，则添加
+		6.css("css属性名")
+			作用：获取对应的css属性的值
+				ex.
+				$obj.css("id")
+				作用：获取$obj对象的id属性值
+		7.css("css属性名","css属性值")
+			作用：为元素设置css属性值
+		8.css(json对象)
+			json对象，类似于python中字典的写法
+			ex
+				$obj.css({
+					"color":"red",
+					"background-color":"orange"
+				});
+	4.遍历节点操作
+		1，children()/children(selector)
+			作用：获取jq对象的所有子元素或带有之地当选择器的子元素
+			注意：children只考虑子代元素不考虑后代元素
+		2.next()/next(selector)
+			作用获取jq对象的下一个兄弟元素/满足selector的下一个兄弟元素
+		3.prev()/prev(selector)
+			作用：获取jq对象的上一个兄弟元素/满足selector的上一个兄弟元素
+		4.siblings()/siblings(selector)
+			作用：获取jq对象的所有兄弟节点/满足selector的所有兄弟
+		5.find(selector)
+			作用：获取满足selector选择器的所有后代元素
+		6.parent()
+			作用：查找jq对象的父元素
+	5.创建元素and插入元素
+		1.创建元素
+			语法：var $obj = $("创建的内容");
+			注意：创建内容必须是标记
+			ex：1。创建一对div
+				var $div = $("<div id = 'xxx'>xxxxxx</div>");
+				2.创建一对button
+				var $btn = $("<button><button>");
+				$btn.attr("id","btnDelete");
+				$btn.html("删除");
+		2.插入元素
+			1.内部插入
+				1.$obj.append($new);
+					将$new元素插入到$onj中最后一个元素位置处
+				2.$obj.parent($new);
+					将$new元素插入到$obj中第一个子元素的位置处
+			2.外部插入
+				作为兄弟元素插入到昂网页中
+				1.$obj.after($new);
+					将$new作为$obj的下一个兄弟节点插入到网页中
+				2.$obj.before($new);
+					将$new作为$obj的上一个兄弟节点插入到网页中
+2.jq中的事件处理
+	1.dom加载后的操作
+		1.$(document).ready(funcation(){
+			//DOM树加载完毕后要执行的操作
+			//相当于是页面初始化
+		});
+		2.$().ready(funcation(){
+			//效果同上
+		})
+		3.$(funcation(){
+			//效果同上
+		});
+	2.jq事件绑定
+		1.方式1
+			$obj.bind("事件名称",事件处理函数);
+			ex:
+				$obj.bind("click",funcation(){
+					//执行的事件
+				})
+		2.
+			$obj.事件名称(function(){
+
+			});
+			ex.
+				$obj.click(function(){
+					//事件
+				})
+		常用事件：
+		 	$obj.click(fn);
+		 	$obj.mouseover(fn);
+		 	$obj.mousemove(fn);
+		 	$obj.mouseout(fn);
+		 	$obj.keydown(fn);
+		 	$obj.ketpress(fn);
+		 	$obj.keyup(fn);
+		 	$obj.focus(fn);
+		 	$obj.blur(fn);
+		 	$obj.change(fn);
+		 	$obj.submit(fn);
+	3.事件中的this
+		在jq事件中，this表示的就是触发当前事件的DoM对象
+	4.事件对象 - event
+		在绑定事件的时候，允许传递event参数来表示事件对象
+		1.$obj.bind("事件名称",function(event){
+			event 表示的是事件的对象
+		})
+		2.$obj.事件名称(function(event){
+			event 表示的是事件对象
+		})
+		event 的使用方式与原生js事件中的事件对象一致
+		1.事件源
+			event.target
+		2.鼠标事件
+			event.offsetX 在元素上的横作标
+			event.offsetY 在元素上的纵坐标
+		3.键盘事件
+			event.witch:键位码或ASCII码
+	5.激发事件操作
+		$obj.事件名称；
+		ex.
+			$obj.click()
+			$obj.click(function(){}) //为$obj绑定click事件
+3.jq删除节点
+	1.remove()
+		语法：$obj.remove();
+		作用删除$obj元素
+	2.remove("selector")
+		语法：$obj.remove("selector")
+		作用：将满足的selector选择器的元素删除
+	3.empty()
+		语法：$obj.empty()
+		作用：清空所有元素
+4.jq 遍历操作：
+	方法：each()
+	1.循环遍历jq数组
+		$obj.each(function(i,obj){
+			i:循环出来的元素下标
+			obj：循环出来的元素（dom元素，不是jq）
+		})；
+	2.循环遍历js数组（原生）
+		1.将原生数组通过$()转换成jq数组
+		2.
+			$.each(原生数组，function(i,obj){
+				i:遍历出来的元素下标
+				obj:遍历出来的元素
+			});
+
+

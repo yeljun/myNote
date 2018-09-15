@@ -1,0 +1,173 @@
+1.外部对象
+	1.BOM和DOM
+		BOM：Browser Object Model 浏览器对象模型，将浏览器比喻成一个对象----window（网页初始化时自动创建的），可以通过 window对象操作浏览器中的内容
+		DOM：Document Object Model 文档对象模型
+		将HTML文档比喻成一个对象 ---document  （属于window的一个属性），可以灵活的操控网页上的内容
+	2.window 对象(BOM)
+		1.作用
+			表示浏览器
+			window下的属性和方法在使用时可以省略window.直接去调用
+				window.alert() ------>alert()
+				window.prompt() ----->prompt()
+				window.document ----->document
+				window.history  ----->history
+		2.window中的对话框
+			1.警告框
+			 	alert()
+			2.输入框
+				prompt()
+			3.确认框
+				confirm("")
+				如果点击确定按钮的话返回true，其余的所有返回false
+				1.网页中创建一个按钮，显示关闭
+				2，点击按钮时，弹出消息框
+		3.window中的定时器
+			1.定时器的分类
+				1.周期性定时器
+					每隔一段时间后就执行一段程序，反复执行
+				2.一次性定时器
+					在指定的时间间隔后，只执行一次操作
+			2.周期性定时器
+				1，声明定时器
+					var ret = window.setInterval(fun,time);
+						fun:函数，要周期性执行的操作，可以是匿名函数
+						time:要间隔的时间周期，以毫秒为单位的数字
+						ret:返回已创建好的定时器对象
+				2，清除定时器
+					window.clearInterval(timer)
+						timer：要停止的定时器对象
+			3.一次性定时器
+			    1.声明定时器
+			    	var ret = setTimeout(fun,time);
+			    		fun:等待一定的时间后要执行的操作
+			    		time：要等待的时长，以ms为单位
+			    		ret:创建好的定时器对象
+			    2.清除定时器
+			    	clearTimeout(timer);
+			    	timer：已经创建好的一次性定时器对象
+			4.window中的属性
+				1.screen 属性
+					获取客户端显示器相关的信息
+					属性：
+						1.width / height 获取屏幕的分辨率
+						2.availWidth/availHeight 可用分辨率
+				2.history 属性
+					1.作用：处理当前窗口所访问过的url地址
+					2.属性 & 方法
+						1.属性：length，表示当前窗口所访问的过的url数量
+						方法：
+							1，back():后退
+							2. forward():前进
+							3. go(num):在当前页面的基础上前景或后退num步
+							     num:取值为正数，前进； 取值为负，后退
+				3.location 属性
+					1.作用
+					    表示浏览器上地址栏的信息
+					2.属性 & 方法
+					    1，属性：href
+					        表示当前窗口中正在浏览的网页地址
+					        如果为href设置值
+					    2,方法：reload
+					         重新再在当前网页，等同于刷新操作
+				4.navigator 属性
+				    1.封装了浏览器向管比信息
+				    2，属性 userAgent ：显示浏览器相关信息
+				5.document 属性(重点)
+*****************
+2document 对象（DOM模型）
+	1.document 的概述
+		document对象，是DOM模型中的顶层对象，封装了所有和html元素相关的属性，方法以及事件，由于document是属于window对象核心属性之一，所以不用声明在网页中就可以直接使用
+		网页在加载的时候，会在内存中形成一颗节点数（DOM树） DOM树会封装网页上的所有的内容，网页上的每一个元素，每一个属性，每一段文本，都是DOM树上的一个独立的节点
+		DOM所提供的操作：
+			1,查找节点的方法
+			2，读取节点的信息
+			3，修改节点的信息
+			4，删除节点
+			5，创建节点
+			注意：只要DOM树上的内容发生变化的话，网页也会一同变化
+		DOM数上的节点类型：
+			1.元素节点 -- 表示的是网页中的一个元素
+			2.属性节点 -- 表示的是元素中的一个属性
+			3，文本节点-- 表示的是元素中的文本内容
+			4，注释节点-- 表示网页中的一个注释
+			5，文档节点-- 表示整个html文档
+	2.查找元素节点
+		1.通过元素的id查找元素节点
+			前提：元素一定要具备id属性，否则无法查找
+		    var elem = document.getElementById("元素id");
+		    	elem:对应的id的元素在js中的表现形式 - DOM元素/DOM对象
+		   DOM对象属性
+		   	1.innerHTML 修改或获取当前DOM对象的html文本
+		   	2.innerText 修改或获取当前DOM对象的普通文本
+		   	注意：以上两个属性值正对双标记有效
+		   	3.value 该属性只正对表单控件，允许获取或设置表单控件的值
+	3.读取节点的信息
+		1.读取当前节点的类型
+			属性：nodeType
+			值：
+				返回1：元素节点 
+				返回2：属性节点 
+				返回3：文本节点 
+				返回8：注释节点 
+				返回9：文档节点
+		2.节点名称
+		    属性：nodeName
+		    元素节点或属性节点：返回标签名或属性名
+		    文本节点：返回 #text
+		    文档节点：返回 #document
+		    注释节点：返回 #comment
+	4.获取或设置元素节点的属性
+		所有元素节点都具有以下方法，用于操作属性：
+		1.getAttribute("attrName")
+			作用：或取指定属性的值
+			attrName：要获取的属性的名称
+			返回值：attriName属性对应的值
+		2.setAttribute("attrName","attrValue")
+			作用：设置指定属性的值
+			attrName：设置的属性名
+			attrValue：要设置的属性值
+		3.removeAttribute("attrName")
+		    作用：将attrName属性重节点中删除
+		练习：
+			1，创建一个网页：
+			2，创建a标记，连接地址：http://www.baidu.com
+			   文本百度
+			3，创建一个按钮，文本为修改
+			4，点击按钮时，将a标记修改为连接地址为：http://www.tmooc.cn 文本为TMOOC
+	5.元素节点的样式
+		1.使用setAttribute()设置class属性值
+			相当于鼎泰元素绑定的类选择器
+			elem.setAttribute("class","类选择器")
+		2.使用元素的class 的属性修改class的值
+		    elem.className = "类选择器";
+		3,变相的使用内链方式设置样式属性
+			elem.style.css属性名 = 值;
+			elem.style.color = "red";
+			注意：
+				如果css属性名中包含“-”要取消，并且后面单词的首字符变大写
+				elem.style.fontSize = '18px'; -----(font-size)
+				//设置elem元素有边框颜色为红色
+				border-right-color
+				elem.styleBorderColor = 'red';
+********************************
+3.查询节点的方式
+	1，根据id查询
+		document.getElementById();
+	2,根据节点的层级关系查询节点
+		1.parentNode属性
+			返回当前节点的父节点元素
+		2.childNodes属性
+			返回当前节点的所有子元素数组
+		3.children属性
+			返回当前节点的所有子元素素组（元素节点）
+		4.nextSibling属性
+			获取当前节点的下一兄弟节点（最多只能找一个）
+		5.nextElementSibling属性
+			获取当前节点的下一个元素兄弟节点
+		6.previousSibling
+			获取上一个兄弟节点
+		7.previousElementSibling
+			获取上一个元素节点
+
+
+

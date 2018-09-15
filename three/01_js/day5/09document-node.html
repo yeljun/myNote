@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ddd</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<div id="main">
+		<p id="pp">设置main中的p</p>
+	</div>
+	<div id="poem">
+		<h3 id="tie">春晓</h3>
+		<p>春天不洗澡，</p>
+		<p>处处蚊子咬。</p>
+		<p>夜来巴掌声，</p>
+		<p>不知死多少！</p>
+		
+	</div>
+	<script src="common.js"></script>
+	<script type="text/javascript">
+		function getParent() {
+			var pp = $("pp");
+			var parent = pp.parentNode;
+			console.log(parent);
+
+		}
+		function getChild() {
+			var poem = $("poem");
+			var arr = poem.childNodes;
+			// console.log(arr)
+			for (var i = 0; i < arr.length; i++) {
+				// console.log(arr[i].nodeType+":"+arr[i].nodeName)
+				//将节点过滤出来
+				if (arr[i].nodeType == 1){
+					arr[i].style.color = "green";
+				}
+			}
+		}
+		function getChildren() {
+			var arr = $("poem").children;
+			console.log(arr)
+		}
+		function getSid() {
+			//获取下一兄弟节点
+			// var elem = $("tie").nextSibling;
+			// console.log(elem);
+			//获取下一个元素兄弟节点
+			var elem = $("tie").nextElementSibling;
+			console.log(elem);
+		}
+	</script>
+
+	<button onclick="getChild()">获取poem子元素</button>
+	<button onclick="getParent();">获取pp的父元素</button>
+	<button onclick="getChildren()">获取poem</button>
+	<button onclick="getSid()">h3节点</button>
+
+</body>
+</html>

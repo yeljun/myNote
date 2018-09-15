@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>date</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<script type="text/javascript">
+		/*
+			判断参数t是否为个位数字，如果是的话则在前面拼接“0‘再返回，否则返回t
+		*/ 
+		function change(t) {
+			if (t<10) {
+				return "0"+t;
+			}
+			return t;
+		}
+
+		function showTime() {
+			var now = new Date();
+
+			var year = now.getFullYear();
+			var month = change(now.getMonth()+1);
+			var date = change(now.getDate());
+			var day = now.getDay();
+			var hour = change(now.getHours());
+			var minute = change(now.getMinutes());
+			var second = change(now.getSeconds());
+			var dayArr = ["日","一","二","三","四","五","六"];
+			var dd = year+"年"+month+"月"+date+"日"+hour+"时"+minute+"分"+second+"秒，星期"+dayArr[day]
+			console.log(dd)
+		}
+	</script>
+	<button onclick="showTime();">aaa</button>
+</body>
+</html>

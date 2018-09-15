@@ -1,0 +1,177 @@
+1.选择器的优先级
+    根据选择器的权重进行优先级判断
+    id 选择器 100 
+    class 类选择器/伪类选择器  10
+    标签选择器 1
+    注意
+    1.组合选择器的权重，由各个选择器的权重相加得到
+    2.选择器的优先级与书写的顺序无关，值看权重
+    3. 行内的优先级是最高的 
+    	#h1{
+	    	color:green;
+	    }
+	    <h1 id="h1" style="color:red;"></h1>
+2.尺寸与边框
+    1，尺寸单位：
+        1，px 像素，最常用的单位，也是浏览器默认的单位
+        2，%  百分比 占据父元素对应属性的占比
+        ----------以下是绝对单位，不常用----------
+        3，in  英寸  1 in=2.54 cm
+        4，bt  1 bt 1/72 in
+        5,cm 厘米
+        6，mm 毫米
+        注意：css中尺寸单位是不能省略的，0除外
+    2,颜色单位：
+        1。取值英文单词 red green  不考虑单位
+        2，取值16进制 #776655
+           每两位一组代表一种三原色，三组分别对应红绿蓝，每位取值范围0-9 a-f
+        3，短十六进制 #abc
+           由三位组成，每一位就代表了一种三原色，浏览器在渲染时会自动对每一位进行重复，补全成6位
+           的十六进制  #abc----->#aabbcc
+        4，css 提供的颜色表示法
+           rgb(r,g,b) 每个值取值0-255
+           红色rbg(255,0,0)
+        5, css提供的颜色表示法：
+           rgb(r,g,b,alpha) 颜色取值0-255
+           alpha 表示透明值 取值0-1（透明-半透明）
+    3,尺寸属性，
+        1，作用：
+            改变元素的宽度和高度
+            属性 width height
+            取值为数值，单位为px或%
+        2，使用：
+            所有的块级元素可以设置宽度，默认情况宽度与父元素保持一致，高度有内容决定；
+            所有的行内元素不可以设置宽高，大小有内容决定
+        3，内容溢出处理：
+            属性：overflow
+            取值：
+                 1，visible 默认值，溢出=部分可见
+                 2，hidden 溢出部分隐藏不可见
+                 3，scroll 设置内容滚动显示，显示滚动条
+                 4，auto 自动 当内容溢出时，自动添加滚动条并且可用
+                 注意 scroll表示显示水平和垂直滚动条，不管是否真的需要
+                      auto根据内容需要，添加水平或者垂直方向的滚动条
+        4，边框
+            1，属性：border
+            2，取值：border-width border-style border-color 三个值缺一不可
+                eg。border ：5px solid red;
+                border-width设置边框线的宽度
+                border-style设置边框线的样式 取值:solid 实现 dashed 虚线 dotted 点线 double 双线(不常用)
+                border-color:取颜色值，可以使用
+                transparent 表示透明色
+            3，特殊用法：
+                取消边框 border：none;
+            4,单边框设置：
+                border属性用来设置上下左右四个方向的边框
+                四个方向单独设置边框：
+                border-top：5px soled red;
+                border-right:10px soled green;
+                border-bottom:2px soled gray;
+                border-left:1px soled blue;
+            5,网页三角标制作：
+                1，元素尺寸为0
+                2，位元素添加四个方向的边框
+                3，设置其中三条边框的颜色为透明的transoarent
+            6,圆角边框
+                1，属性：border-raduis
+                   取值:px 或者 %
+                   作用：将边框的直角编程圆角
+                   eg：
+                   border-radius：10px;表示按照四个角都按照10px的半径取生成圆角
+                   border-radius：5px 10px 15px 20px；四个值都代表的是上右下左
+                   border-radius:5px 10px;第一值是表示上下，第二个值是左右
+                   border-radius:5px 10px 15px;第四个值默认跟第二个值一致
+                   注意：边框圆角在元素不设置边框的情况下依然有效，可以通过设置50%呈圆形
+                          修改元素显示形状
+            7，边框阴影
+                   属性：box-shadow：h-offset v-offset blur spread color;
+                   h-offset:阴影的水平偏移距离
+                      取值为数字   取值为正，阴影向右偏移，取值为负，阴影向左偏移
+                   v-offset:阴影的垂直偏移距离
+                      取值为数字   取值为正，阴影向下偏移。取值为负，阴影向上偏移
+                   blur：阴影的模糊程度
+                      取值为数字   取值越大，越模糊
+                   spread：阴影扩大或则是缩小的距离
+                      取值为数字   取值为正，阴影会扩大，取值为负，阴影会缩小
+                   color:设置阴影颜色
+            8,浏览器坐标系
+                   1，浏览器在坐上角为原点，向右向下为x和y的正方向，反之为负方向
+3，盒模型
+    1，元素皆为框
+        盒模型：元素在文档档的占据的尺寸计算方式
+        组成：外边距margin 边框border 内边框 padding 内容尺寸
+        计算放肆：
+            标准盒模型：
+                最终width=左右外边距+左右边框+左右内边距+内容宽度
+                最终height=上下外边距+上下边框+上下内边距+内容高度
+            （了解）怪异盒模型：
+                元素内容宽度=左右内边距+边框+内容
+                width=元素内容宽度+左右外边距
+    2，外边距margin
+        1，元素边框与边框之间的距离
+        2，语法
+            1，属性 margin
+            2，取值：
+               margin：10px；表示上右下左都是设置10px的外边距
+               margin：10px 20px；上下为10px，左右为20px
+               margin：10px 20px 30px；上下为10px 和30px 左右位20px
+               margin：10px 20px 30px 40px；
+            3，特殊值：
+              margin：0 auto；
+              表示自动，可以用来设置元素居中
+            4,margin 取值可以分正负
+              正  正方向
+              负代表负方向
+              margin设置为负值元素将进行偏移
+            5,4个方向单独设置外边距
+               margin-top
+               margin-right
+               margin-buttom
+               margin-left
+               取值：数值  取一个值
+            6具有外边距的元素：body,h1,h2,h3,h4,h5,h6,p,ul,ol{magin:0;}
+    3，内边距padding
+        1，元素的内容与元素的边框的距离
+            通过设置width height属性，实际上设置的是元素内容框的大小
+        2，使用
+            1，属性 padding
+            2，取值 数值可以给定1 /2  /3  /4个值
+               padding:2px; 4个方向的值都是2px
+               padding:10px 20px 30px 40px
+        3，具有默认的内边距的元素
+            ol,ul,input(文本框，密码框，按钮会存在)
+            ol,ul,input{
+            	padding:0;
+            }
+            页面开发时，清除浏览器的默认的边距
+            body,ul,ol,h1,h2,h3,h4,h5,h6,p{
+               margin:0;
+               padding:0;
+            }
+            input可以根据需求单独设置
+    4,盒模型的属性支持度
+        1，盒模型属性：margin border padding width height
+        2，块元素对盒模型属性完全支持
+        3，行内元素对盒模型属性部分支持
+            行内元素可以设置左右的内外边距
+            不可以设置宽高及上下内外边距
+    5,元素类型转换：
+        属性 disolay
+        取值：inline 行内元素
+              block 块元素
+              inline-block行内块
+              none 元素隐藏 元素在文档中就不占位了
+
+    6,文本居中显示
+        水平居中：text-align：center
+        垂直居中：设置元素，高度height 与行高line-height保持一致
+
+
+
+作业：
+   制作导航条
+    实现鼠标悬停能改变背景色和文本色
+    文本访问之后改变文本色
+    作业.png
+
+

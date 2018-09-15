@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>dd</title>
+</head>
+<body>
+<!-- 	<script>
+		do{
+			//从弹框中录入数据
+			var input = prompt("输入数据")
+			//打印输出
+			console.log(input)
+		}while(input != "exit")
+	</script>
+ -->
+ 	<script>
+ 		var year = Number(prompt("year"));
+		var mouth = Number(prompt("mouth"));
+		var day = Number(prompt("day"));
+		//判断该年是不是闰年
+		var isRun = year % 4 == 0 && year % 100 != 0 || year % 400 ==0;
+		var too=0
+		var i = 1
+		while (i<mouth){
+			if ((mouth ^ 1)==1):{
+				too+=31;
+			}else{
+				if (isRun) {
+					too-=1
+				}
+				too+=30;
+			}
+		
+			console.log(too)
+			i++
+		}
+			
+ 	</script>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+1.模板
+	1.过滤器
+		在显示变量数据之前，对数据进行过滤筛选
+	2.过滤器语法：
+		{{变量|过滤器}}
+	3常用过滤器
+		1.{{value|upper}}
+			将value变为大写
+		2.{{value|lower}
+			将value变为小写
+		3.{{value|add：num}}
+			将num累加到value后
+		4.{{floatformat：n}}
+			将value四舍五入到n位小数
+		5.{{value|truncatechars：n}}
+			将value截取保留至n位字符（包含...）
+	4.静态文件
+		1.在Django中不被解释器动态解析的文件就称为静态文件，如：图片，js，css，静态的html 
+		2.Django中静态问价内的处理
+			需要在settings.py中设置静态文件的信息
+				1.设置静态文件的访问路径
+					STATIC_URL='/static/'
+				2.设置静态文件的存储路径
+					STATICFILES_DIRS = (os.path.join(BASE_DIR,'静态文件存放的目录名称'))
+					STATUCFILES_DIRS = (os.path.join(BASE_DIR,'static'))
+					静态文件目录存放位置
+						1.所有应用中创建一个同名目录
+						2.项目的根目录处也可以创建一个同名目录
+				3.访问静态文件
+					1。直接使用静态文件的访问路径，进行访问
+						http：//localhost:8000/static/...
+						<img src='/static/..'>
+					2.使用{% static %} 访问静态资源
+						{% static %} 表示的是静态资源的方文路径
+						1.在模板的最顶层增加
+							{% load static %}
+						2.在使用今天资源时
+							<img src = "{% static '静态资源在static中的路径的路径' %}">
+	5.模板的继承
+		1.语法：
+			1.在父模板中
+				必须要表示出那些内容在子模板中是允许被修改的
+				{% block 名称 %}
+					父模板中的内容
+				{% endblock %}
+				block的作用
+					1.父模板中是正常显示的
+					2.在字模板中如果不修改block的内容的话则按照父模板中的内容进行显示，要是修改了的话，则按照子模板中的内容显示
+			2.在子模板中
+				1.指定继承自哪个模板
+					{% extends '指定父模板名称' %}
+				2.增加block标签，改写属于自己的内容
+	6.url的name参数
+		1.url的语法：
+			url（regex,views,kwargs,name）
+				name : 为了给当前或地址起别名 反向解析时用。
+				反向解析：通过name的值来匹配出对应的regex地址
+			url(regex,views,kwargs=None,name='别名')
+		2.在模板中通过别名找地址
+			{% url '别名' %}
+			带参数的别名
+			{% url '别名' '参数2' .... %}
+		3.在视图中实现name别名的反向解析
+			1.基本解析
+			url = reverse("别名")
+			url就是通过别名解析出来的地址
+			

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>aaa</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<div id="main">this is test of div</div>
+	<button onclick="showInfo();">显示节点信息</button>
+	<script src="common.js"></script>
+	<script type="text/javascript">
+		function showInfo() {
+			// 1.获取id为mian的div元素
+			var div = $("main")
+			// 2.打印出div的nodeTyoe
+			console.log("nodetype:"+div.nodeType);
+			// 3.打印输出div的nodeName
+			console.log("nodetype:"+div.nodeName);
+		}
+	</script>
+</body>
+</html>

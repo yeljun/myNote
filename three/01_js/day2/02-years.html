@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>doc</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<script>
+		var year=prompt("year")
+		var isRun=year%4==0 && year % 100 != 0 || year % 400 == 0;
+		isRun ? console.log("是闰年") : console.log("不是闰年");
+		var days = isRun ? 366 : 365;
+		console.log(days)
+	</script>
+
+</body>
+</html>

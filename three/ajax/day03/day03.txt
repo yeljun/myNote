@@ -1,0 +1,111 @@
+1.$.get(url,data,callback,type)
+	1,url:异步请求的地址
+	2，data：请求提交的参数
+	3，callback请求成功时的回调函数	
+		function（data）{
+			data：表示响应回来的数据
+		}
+	4，type：指定返回内容的格式的类型
+		1.html：响应回来的内容是html文本
+		2.text：响应回来的内容是text文本
+		3，json：响应回来的内容是json对象
+2.$.post(url,data,callback,type)
+3.$.ajax()
+	特点：所有的操作都可以自己定制
+	$.ajax({JSON对象});
+		JSON对象:
+			1，url：字符串，要异步请求的地址
+			2，type:字符串，提交方式，get或post
+			3,data:JSON对象或字符串，要传递到后台服务器的参数
+			4，dataType：字符串，指定响应回来的数据的类型
+				1.'html'：响应回来的数据是html文本
+				2.'text'：响应回来的数据是text文本
+				3.'script':响应回来的数据是JavaScript代码片段
+				4.‘json’：响应回来的数据是json对象
+				5，'xml'：响应回来的数据是xml
+				6，‘jsonp’：jsonp格式，跨域时使用
+			5，success：请求和响应成功时的回调函数
+				success：function(data，textStatus){
+					//data：响应成功时的响应数据
+					//textStatus：响应状态文本
+				}
+			6.error：请求和响应出错时响应的回调函数
+				error:function(xhr，textStatus){
+					xhr：异步请求对象
+					textStatus：响应状态文本
+				}
+			7，async：指定是否是异步方式
+				true：使用异步方式
+				false：使用同步的方式
+				默认为true
+===========================================================
+
+项目：
+任务1，
+	1，创建数据库 --FruitDay
+	2，在FruitDay项目中完成数据库数据的配置
+	3，同步基础设置到数据库中
+任务2：
+	1.创建Models  --Users
+	2.字段：
+		1.手机号 uphone 20
+		2，密码  upwd 20
+		3，用户名 uname 20
+		4，邮箱  uemail
+		5.isActive boolen true
+同步到数据库
+collate
+任务三：
+	注册前的数据验证
+		1，手机号码：
+			1，不能为空	
+			2.格式（可选） --11 位
+			3，验证手机号码是否存在
+			给出提示 通过 /错误
+		2密码
+		    1,6位以上
+		3，确认密码
+			与密码一致
+		4，用户名
+			不能为空
+		5,邮箱
+			1，不能为空
+			2，格式（可选，使用正则）
+任务4，完成注册操作：
+	1，后端接收所欲数据插入调数据库
+	2，注册成功后在session中保存用户的id和uphone
+	3.session设置，浏览器关闭时，session则失效
+
+
+2,如果没有用户登录，显示【登录】【注册有惊喜】
+	如果已经登录
+3.使用ajax判断后
+
+任务5：
+	创建商品的models
+		名称：GoodsType
+			title 商品类型的名称
+			picture -商品的图片
+				models。ImageField(upload_to="static/upload/goodstype")
+			desc --商品类型的描述
+	创建商品的models
+		名称Goods
+			title  商品的名称
+			price --商品价格 decimal（）
+			spec  --商品的规格 g kg 盒，条
+			picture --商品图片
+				models。ImageField（upload_to="static/upload/goods"）
+			goodsType --商品类型
+			  引用自GoodsType
+			isActive是否上架
+			  models。BooleanField（）
+	按照数据的纯输出按照商品的类别进行商品的加载
+		1，使用ajax向服务器端发送请求，并接收数据（包含各个类别，以及类别下的商品）
+		2.在前端中，对数据惊醒解析，按照HTML规定好的格式，进行显示
+
+	添加商品到购物车
+	1.点击购物车按钮时，验证用户是否登录，没有德华给出登录提示，已登录的话允许将数据加入到购物车
+	2.添加到购物车
+		使用ajax，将商品id传递给服务器
+		服务器从session中取出用户的uid，如果购买的商品在购物车中已经存在，则将数量+1,否则，将数据插入到数据库中，数量为1
+		

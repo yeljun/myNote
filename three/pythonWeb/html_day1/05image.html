@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>img标签</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<!--图片标签 <img src="路径"
+	url 组成：协议 域名 目录路径 文件名
+	标签属性不适用用于所有元素，但是可以通过css来设置
+	-->
+
+	<img src="http://cdn.tmooc.cn/tmooc-web/imgad/2018/7/27//BF0B3ADB68BD4E5AB8C1B2C04E86C79C.png"/>
+	<h1 style="width: 300px;height: 300px;">大标题</h1>
+	<p>
+		url 组成：协议 域名 目录路径 文件名
+	</p>
+	<p>
+		路径分为相对路径和绝对路径<br>
+		绝对路径：从根目录开始查找<br>
+		注意：1，斜杠的问题 2，目录与文件名称<br>
+		file:///协议是windows上打开本地文件的协议
+		类似于文件管理器
+
+	</p>
+	<img src="C:/Users/Administrator/Desktop/pythonWeb/img/northStar.jpg"/>
+	<img src="file:///C:/Users/Administrator/Desktop/pythonWeb/img/northStar.jpg"/>
+
+	<p width="300px" height="300">
+		相对路径：从文件当前位置开始查找<br>
+		../表示从当前的文件夹返回上级目录
+	</p>
+	<img src="img/happy.gif" width="300px" height="300px"/>
+	<img src="img/images/huiyuan.jpg" width="300px" height="300px"/>
+	<img src="img/wxy.jpeg" width="300px" height="300"/>
+</body>
+</html>
+

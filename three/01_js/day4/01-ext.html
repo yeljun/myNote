@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>sss</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var arr = [1,23,4,456,65,8923,100];
+		function desc() {
+			arr.sort(function (a,b) {
+				return a-b;
+			})
+			console.log(arr);
+		}
+		function jiang() {
+			arr.sort(function (a,b) {
+				return b-a;
+			})
+			console.log(arr);
+		}
+		function stackOper() {
+			var arr = ["松江","长江","黄河","松花江","香江"]
+			// var len = arr.push("湘江");
+			// console.log("新数组"+arr);
+			// console.log("长度",len);
+			// var elem = arr.pop();
+			// console.log("弹栈后:"+arr);
+			// console.log("被删除的元素"+elem);
+			var len2 = arr.unshift("丽江");
+			console.log("新数组:"+arr)
+			console.log("新数组的长度为",len2)
+			var elem2 = arr.shift();
+			console.log("新数组:"+arr)
+			console.log("删除的元素:",elem2)
+		}
+	</script>
+	<button onclick="desc();">升序</button>
+	<button onclick="jiang();">降序</button>
+	<button onclick="stackOper();">push</button>
+
+</body>
+</html>

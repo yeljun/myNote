@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>aaa</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function gosh() {
+			var str = "1001_5$1002_4$1053_1";
+			
+			var array=str.split("$");
+			for (var i = 0; i < array.length; i++) {
+				var k=array[i].split("_");
+				console.log("商品id:",k[0]);
+				console.log("商品数量:",k[1]);
+			}
+		}
+		function testReplace() {
+			var str = "你个傻傻!,你全家都是傻傻！"
+			var reg = /傻傻/g;
+
+			//统计子字符串的个数
+			var ret = str.replace(reg,"**");
+			console.log(ret);
+			var arr = str.match(reg);
+			console.log("出现了"+arr+"个"+ret)
+
+			
+		}
+	</script>
+	<button onclick="gosh();">购物</button>
+	<button onclick="testReplace();">kkk</button>
+</body>
+
+</html>

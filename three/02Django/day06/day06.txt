@@ -1,0 +1,102 @@
+1.关系映射
+	1.一对一的映射
+		1.什么是一对一
+			A表中的一条记录只能与B表中的一条记录相关联
+			B表中的一条记录只能与A表中的一条记录相关联
+			在数据库中实现
+			A：设置主键
+			B：增加一个列，引用自A表的主键（外键），并且增加唯一约束
+		2语法：
+			在关联的两个类的任何一个类中，增加对另外一个类的引用
+			属性=models.OneToOneField(Entry)
+				class Wife(models.Model):
+					name=models.CharField(...)
+					age=models.IntegerField(...)
+					author = models.OneToOneField(Author)
+		3.查询
+			class Wife(models.Model):
+				name=models.CharField(...)
+				age=models.IntegerField(...)
+				author = models.OneToOneField(Author)
+			1.正向查询 通过wife找author
+				#获取id为1的wife信息
+				wife = Wife.objects.get(id=1)
+				#在获取wife所关联的Author
+				author = wife.author
+			2.反向查询 通过author找wife
+				Django会通过OneToOneField在关联的实体类找那个增加一个隐式属性，表示对当前的实体的引用
+				隐式属性民称为：当前类名的全小写形式
+				#获取id为5的author信息
+				author=Author.objects.get(id=5)
+				#在获取author对应的wife
+				wife = author.wife
+	2.一对多的映射
+		1.什么是一对多
+			A表中的一条数据可以与B表中的任意多条数据相关联
+			B表中的一条数据只能与A表中的一条数据相关联
+			出版社与图书之间的关系
+		2.在数据库中的体现
+			主要是通过外键（Foreign Key）来实现一对多
+			在‘多’表中增加外键（Foreign Key）
+			对‘一’表中的主键进行引用
+		3.语法：
+			通过外键（Foreign Key）
+			在‘多’实体中增加：
+				属性 = models.ForeignKey(Entry)
+		4.查询
+			Book（多）Publisher(一)
+			class Book(models.Model):
+				....
+				publisher = models.ForeignKey(Publisher)
+
+			#正向查询：通过Book查询Publisher
+				book=Book.object.get(id=1)
+				publisher = book.publisher
+			反向查询：通过Publisher查询Book
+				django会通过ForeignKey（）相关联的类中增加一个隐式属性：当前类_set
+	3.多对多映射
+		1.什么是多对多
+			A表中的一条记录可以与B表中的任意多条记录相匹配
+			B表中的一条记录可以与A表中的任意多条记录相匹配
+		2.在数据库中的体现
+			必须创建第三张表，并涉及到的两张表的数据查询
+		3.语法：
+			在涉及到的两个类的任意一个类中都可以增加对另外一个类的多对多的引用
+			Entry=models.ManyToManyField(Entry)
+
+			创建书籍和作者之间的多对多的引用
+				可以在书籍实体中增加多作者的引用
+				可以在作者实体中增加多书籍的引用
+			class Book(models.Model):
+				title = models.Charfield（xxx）
+				...
+				author = models.ManyToManyField（Author）
+			正向查询：通过Book找对饮的所有的Author
+			#查询id为1的书籍的信息
+				book = Book.object.get(id=1)
+			#查询book对应的所有作者
+				author = book.author.all()
+			通过关联属性查询对应的所有信息
+
+			反向查询：通过关联属性查询对应的所有信息
+			查询：通过Author查询所有的Book
+			Django会通过ManyToManyField（）在关联类中增加一个隐式属性
+			属性名：当前类_set()
+			查询id为2的Author的信息
+				author = Author.objects.get(id=2)
+				books = author.book_set.all()
+			练习：创建Author与Publisher多对多关系
+				1，查询老舍所签约的所有出版社
+				2，查询北京大学出版社下的所有签约的作者
+2.HTTP通信协议
+	1.HTTP：Hyper Text Transfer Protocol
+	作用：规范了数据是如何打扮以及传递的
+	2.请求消息
+		请求的起始行，请求消息，请求主体
+		请求主体
+			post和put量中提交方式会产生请求主体
+	3.响应消息
+		由响应起始行，响应消息头，响应主体
+		
+
+

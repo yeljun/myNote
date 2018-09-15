@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ddd</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<div id="d1">这是一个网页中的一个div</div>
+	<button onclick="btnChange()">change</button>
+	<button onclick="btnDom()">jq--->dom</button>
+	<script src="jquery-1.11.3.js"></script>
+	<script type="text/javascript">
+		function btnDom() {
+			//1.通过jq提供的选择器获取页面上的id为d1的元素
+			var $d1 = $("#d1");
+			$d1.html("动态转化的元素");
+			var d1 = $d1[0];
+			console.log(d1);
+			d1.innerHTML = "innerHTML";
+		}
+		function btnChange() {
+			var d1 = document.getElementById("d1");
+			var $d1 = $(d1);
+			// console.log($d1);
+			// $d1.innerHTML = "改变后的内容";
+			//$d1不能使用innerHTML属性改变内容
+			//jquery对象提供html()用于获取或设置对应的元素的内容
+			$d1.html("动态改变的内容");
+			alert($d1.html());
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>doc</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<script >
+		var year = Number(prompt("year"));
+		var mouth = Number(prompt("mouth"));
+		var day = Number(prompt("day"));
+		//判断该年是不是闰年
+		var isRun = year % 4 == 0 && year % 100 != 0 || year % 400 ==0;
+		var too=0
+		switch (mouth-1){
+			case 11:
+				too+=30;
+			case 10:
+				too+=31;
+			case 9:
+				too+=30;
+			case 8:
+				too+=31;
+			case 7:
+				too+=31;
+			case 6:
+				too+=30;
+			case 5:
+				too+=31;
+			case 4:
+				too+=30;
+			case 3:
+				too+=31;
+			case 2:
+				too+=28;
+				if (isRun) {
+					too+=1;
+				}
+			case 1:
+				too+=31;
+			}
+			too+=day;
+			console.log(too)
+
+
+
+	</script>
+</body>
+</html>

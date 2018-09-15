@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>块元素和盒模型属性支持情况</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		body{
+			margin: 0;
+		}
+		div{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			border:10px solid black;
+			margin: 20px;
+			padding: 20px;
+		}
+		span{
+			width: 500px;
+			heigh:500px;
+			background-color: cyan;
+			font-size: 24px;
+			border:10px solid green;
+			margin: 200px 20px;
+			padding: 100px 50px;
+		}
+	</style>
+</head>
+<body>
+	<!-- 块元素和盒模型属性支持情况 -->
+	<!-- 盒模型属性：margin border padding
+ 		1,块内元素可以设置宽高，行内元素不能设置宽高
+
+ 	-->
+ 	
+ 	<div>块内元素可以设置宽高，行内元素不能设置宽高</div>
+ 	<span>span文本</span>
+</body>
+</html>

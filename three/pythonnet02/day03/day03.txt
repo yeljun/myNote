@@ -1,0 +1,55 @@
+1.requests模块
+	1.常用方法：
+		1、get（）：发起请求，获取返回值
+		2，response方法
+		3，get（）：查询参数 params=params
+			1.没有查询参数的时候	
+				res = requests.get(url,headers=headers)
+				
+			2.有查询参数
+				params = {"wd":"达内"} 
+				res = requests.get(url,params=parmas)
+		4，post（）：参数名data
+			1.data={} data参数为字典，不用转换为bytes数据类型
+			2.示例 02_youdao.py
+		5,代理：proxies
+			1.爬虫和反爬虫的第二部
+				1.西刺代理
+				2.快代理
+				3.全网代理
+			2.普通代理：proxies={"协议":"ip地址：端口号"}
+			{"http":"125.118.148.188	808"}
+			3.私密代理
+				proxies = {"http":"http//309435365:szayclhp@114.67.228.126:16819"}
+			4,案例：链家地产
+				目标小区名称，总价
+				步骤：
+					url
+						https://wh.lianjia.com/ershoufang/pg2/
+
+					2正则匹配
+
+					3写入本地文件
+				<div class="info clear">.*?data-el="region">(.*?)</a>.*?<div class totalPrice>.*?<span>(.*?)</span>
+		6.Web客户端验证：auth
+			1.auth=（“用户名”，“密码”）
+			2.正则：p = re.compile(<a href="\w+/">(.*?)</a>,re.S)
+		7.SSL整数认证 ：verify
+			1.verify = True 默认需要认证
+			2.verify =False 忽略认证
+2.Handler处理器（urllib.request）
+	1.定义
+		自定义的urlopen（）方法，是一个特殊的opener
+	2，常用的方法：
+		1.build_opener(handler处理对象)
+		2.opener.open(url,headers,...)
+	3,使用流程
+		1，创建相关的handler处理器对象
+			http_headler = urllib.request.HTTPHandler()
+		2, 创建自定义的opener对象
+			opener = urllib.request.build_opener(http_handler)
+		3.利用opener对象open方法发请求
+	4，handler处理分类
+		1，HTTPHandler()
+		2,ProxyHandler(代理ip)
+		3，ProxyBasicAuthHandler（密码管理器对象）：私密代理

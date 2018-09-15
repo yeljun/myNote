@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>dd</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var g_unm=222;
+		function funa() {
+			var num=666;
+			str = "the str is funa"
+			console.log("funa",num);
+			console.log("funa_g_unm",g_unm)
+		}
+		
+		function funb() {
+			// console.log("funb",num);//报错
+			console.log("funa_g_unm",g_unm)
+			console.log(str+"-------funb中调用")
+		}
+		// console.log(str+"---------全局中调用") //会报错，
+		function func(){
+			//uname会被预读到func函数的顶端
+			//var uname;
+			//console.log(uname)  //undefind
+			//uname = "战鼓儿哟"
+			var uname = "张学友";
+			console.log(uname)
+
+		}
+	</script>
+	<button onclick="funa()">funa</button>
+	<button onclick="funb()">funb</button>
+	<button onclick="func()">funb</button>
+	<script type="text/javascript">
+		console.log(str)
+	</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>dco</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		div{
+			width: 300px;
+			height: 300px;
+
+		}
+		#red{
+			/*width: 150px;*/
+			background: red;
+			/*设置浮动
+				浮动元素脱离文档流，悬浮在上方，后面未浮动元素后上前占位，同时
+			*/
+			float: left;
+		}
+		#green{
+			/*浮动元素在碰到其他元素边框时停止浮动*/
+			background: green;
+			float: left;
+		}
+		#blue{
+			background: blue;
+			float: left;
+		}
+		span{
+			float: left;
+			width: 100px;
+			height: 100px;
+			background: orange;
+		}
+		h1{
+			float: left;
+			background: pink;
+		}
+	</style>
+</head>
+<body>
+	<div id="red"></div>
+	<div id="green"></div>
+	<div id="blue"></div>
+	<div id="red"></div>
+	<div id="green"></div>
+	<div id="blue"></div>
+	<div id="red"></div>
+	<div id="green"></div>
+	<div id="blue"></div>
+	<span>这是span</span>
+	<h1>大标题</h1>
+</body>
+</html>

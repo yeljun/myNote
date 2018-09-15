@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>dd</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function ext1(argument) {
+			// //方法1：
+			// var i = 0
+			// var array1 = [];
+			// while (true) {
+			// 	var a = prompt("请输入数据：");
+			// 	if (a=="exit") {
+			// 		break;
+			// 	}
+				
+			// 	array1[i]=a;
+			// 	i++
+			// }
+			// console.log(array1)
+			var arra1=[];
+			do{
+				var input = prompt("input")
+				if (input!="exit") {
+					arra1[arra1.length]=input
+				}
+			}while(input !="exit")
+			console.log(arra1)
+
+			
+		}
+		var select = prompt("输入要查询人的名字：")
+		var xb=false;
+		for (var i = 0; i < array1.length; i++) {
+			if (select==array1[i]) {
+				xb=i;
+				break;
+			}	
+		}
+		if (xb==false) {
+				console.log("输入的数据不存在！")		
+		}else{
+			console.log(select,"的下标是",xb);
+		}
+		
+			
+
+
+	</script>
+	<button onclick="ext1()">aaaa</button>
+
+</body>
+</html>

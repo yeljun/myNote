@@ -1,0 +1,120 @@
+
+
+day04
+1,csv模块使用流程
+	1，打开csv文件：with open（“测试文件.csv”，‘a’）as f：
+	2.初始化写入对象：writer = csv.writer(f)
+	3,写入数据：writer。writerow(列表)
+2.lxml
+	1.lxml使用流程：
+		1.form lxml import etree
+		2.parseHtml = etree.HTML(html)
+		3.r_list = parseHtml.xpath(xpath表达式)
+
+	2.xpath匹配规则：
+		1.获取节点对象：//div[@class="tiger"]
+		2.获取节点属性值：//div[@class="tiger"]//a/@src
+		3.函数://div[contains(@class,"get")]//a/@href
+3私密代理Handler处理器
+	1,创建密码管理器对象
+		1.pwd = urllib.request.HTTPPasswordMgrWithDeaultRealm
+		2.pwd.add_password(None,ip:端口,用户名，密码)
+	2，创建Handler处理器对象
+		3.http_auth= urllib.request.ProxyBasicAuthHandler(pwd)
+		4.opener = urllib.request.bulid_opener(http_auth)
+		5.req = urllib.request.Request(url,)
+
+day05笔记
+1.糗事百科-Xpath
+	1.目标：用户昵称 段子内容 好笑数 评论数
+	2步骤
+		1找url
+			https://www.qiushibaike.com/8hr/page/1/
+		2xpath匹配
+			//div[contains(@id,"qiushi_tag_")]   ---25
+
+			用户昵称：./div/a/h2
+			段子内容：.//div[@class="content"]/span    ./a/div/span
+			好笑数：.//i         ./div/span/i
+			评论数：.//i         /div/span/a/i
+2.动态网站数据加载 -AJAX
+	1.AJAX动态加载
+		1，特点：动态加载（滚动鼠标滑轮加载）
+		2.抓包工具：查询参数在webForms ——>queryString、value
+		3.案例：豆瓣电影top100榜单剧情
+		
+		https://movie.douban.com/j/chart/top_list?type=11&interval_id=action=&start=0&limit=1 
+		https://movie.douban.com/typerank?type_name=&type=11&interval_id=100:90&action=
+3，json模块
+	1，作用：json格式类型 和Python数据类型 相互转换
+	2，常用方法：
+		1.json.load():json格式 -->Python数据类型
+			json python
+			对象 字典
+			数组 列表
+		2.
+4.selenium+phantom.js强大的网络爬虫
+	1.selenium
+		1.定义：web自动化测试工具，应用于web自动化测试
+		2特点：
+			1，可运行在浏览器上，根据指定操作浏览器，让浏览器自动加载页面
+			2，只是工具，不支持浏览器功能，只能与第三方浏览器结合使用
+		安装：
+			conda install selenium
+			或者
+			pip3 install selenium
+			from selenium import webdriver
+	2，phantomjs
+		1.定义：无界面浏览器（无头浏览器）
+		2，特点：
+			1，把网站加载到内存执行页面加载
+			2，运行高效
+		3.安装
+			1.windows
+				1、把安装包拷贝到python的安装路径下面Scripts 。。。
+				2.	验证 终端：phantomjs
+			2.linux
+				1.下载对应版本的phantomjs，放到一个路径下
+				2，用户主目录：vi .bashrc
+					export PHANTOM_JS=/home/.../phantomjs-...文件名
+					export PATH=$PHANTOM_JS/bin:$PATH
+				3.source .bashrc
+				4.终端：phantomjs
+	3，常用方法：
+		1.driver.get(url)
+		2.driver.page_source.find("内容")
+			1.作用：从html源码中搜索字符串
+			搜索成功：非-1
+			搜索不成功：-1
+		3.driver.find_element_by_id("属性值")
+		4.driver.find_element_by_name("属性值")
+		5.driver.find_element_by_class_name("属性值")
+		6.对象名.send_keys("内容")
+		7.对象名.click()
+		8.driver.quit()
+	4:案例：登录豆瓣网站
+	5，案例：斗鱼直播
+		1.抓取目标：主播观众人数
+			1.主播：span 》class="dy-name ellipsis fl"
+			2.人数：span 》class="dy-num fr"
+			3.下一页：
+				能点：a --> class="shark-pager-next"
+				不能点：a --> class="shark-pager-next shark-pager-disable shark-pager-disable-next"
+
+5.BeaufulSoup
+	1.定义：html或xml的解析器，依赖于lxml库
+	2，安装导入
+		安装pip3 install beautifulsoup4 或者 conda install beautiful
+		安装，模块出错处理：
+		1.conda install selenium -->报错
+			conda uninstall selenium
+		安装 cmd 右键 ->管理员身份运行
+			python -m pip3 install selenium
+		导入模块
+			from bs4 import BeautifulSoup as bs
+	3.BeautifulSoup支持解析库
+		1.html HTML解析器   “lxml”速度快，文档容错能力强
+		2.Python标准库      “html.parser”速度一般，
+
+
+

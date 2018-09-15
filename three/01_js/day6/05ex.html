@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>dddd</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		
+		table{
+			width: 600px;
+
+		}
+		td{
+			width: 140px;
+		}
+		input{
+			width: 80px;
+		}
+	</style>
+
+
+</head>
+<body>
+	<input type="text" name="buName" placeholder="商品名称" id="buName">
+	<input type="text" name="bujg" placeholder="商品价格" id="bujg">
+	<input type="text" name="buNum" placeholder="购买数量" id="buNum">
+	<button onclick="get();">购买</button>
+	<br>
+	<table>
+		<thead>
+			<tr>
+				<td>商品名称</td>
+				<td>商品价格</td>
+				<td>购买数量</td>
+				<td>操作</td>
+			</tr>
+		</thead>
+		<tbody id="tbody1">
+			
+		</tbody>
+		
+	</table>
+	
+	<script src="../day5/common.js"></script>
+	<script type="text/javascript">
+		//获取text中的值value
+
+		function get() {
+
+			var val1 =$("buName");
+			
+			var val2 = $("bujg");
+			var val3 = $("buNum");
+
+			var tr = document.createElement("tr");
+			tr.id = "tr1";
+			$("tbody1").appendChild(tr);
+			
+
+			//向表格中添加一行四列存入text中额数据并添加到tr1中
+			var td1 = document.createElement("td");
+			td1.innerHTML = val1.value;
+			td1.style.backgroundColor = "green";
+
+			
+			var td2 = document.createElement("td");
+			td2.innerHTML = val2.value;
+			td2.style.backgroundColor = "green";
+			
+			var td3 = document.createElement("td");
+			td3.innerHTML = val3.value;
+			td3.style.backgroundColor = "green";
+			
+			var td4 = document.createElement("td");
+			td4.id = "tfd";
+			td4.style.width = "100px";
+			td4.style.backgroundColor = "green";
+			$("tr1").appendChild(td1);
+			$("tr1").appendChild(td2);
+			$("tr1").appendChild(td3);
+			$("tr1").appendChild(td4);
+			
+			// //添加两个按钮
+			// td4.id="c_bu"
+			
+			var bu1 = document.createElement("button");
+			bu1.innerHTML = "修改";
+			bu1.onclick = function(){
+				//获取购买数量的td
+				var tdCount = this.parentNode.previousElementSibling;//查找父元素的上一个兄弟元素
+				console.log(tdCount)
+				if (this.innerHTML == "修改") {
+					this.innerHTML = "确定";
+					//要执行的操作
+					//创建按钮
+					var btnMinus = document.createElement("button"); //创建一个按钮
+					btnMinus.innerHTML = "-";
+					//创建一个问本人框
+					txtCount = document.createElement("input");
+					txtCount.type = "text";
+					txtCount.value = tdCount.innerHTML;
+					//创建一个按钮
+					var btnAdd = document.createElement("button");
+					btnAdd.innerHTML = "+";
+
+					//将以上三个元素添加到tdCount中
+					tdCount.innerHTML = "";
+					tdCount.appendChild(btnMinus);
+					tdCount.appendChild(txtCount);
+					tdCount.appendChild(btnAdd);
+
+					//绑定事件
+					btnMinus.onclick = function () {
+						//获取txtConut的值，并执行-1操作，在赋值给txtCount
+						if (txtCount.value>1) {
+							--txtCount.value;
+						}
+					}
+					btnAdd.onclick = function () {
+						if (txtCount.value) {
+							++txtCount.value;
+						}
+					}
+
+				}else{
+					this.innerHTML = "修改";
+					//要执行的操作
+					var txtCount = tdCount.children[1];
+					// console.log(txtCount.value);
+					tdCount.innerHTML = txtCount.value;
+				}
+			}
+			
+			var bu2 = document.createElement("button");
+			bu2.innerHTML = "删除";
+			//绑定单击事件
+			bu2.onclick=function(){
+				// tbody1.removeChild(tr)
+				$("tbody1").removeChild(this.parentNode.parentNode)
+			}
+			
+			// //将两个按钮添加到td4中tr
+			$("tfd").appendChild(bu1);
+
+			$("tfd").appendChild(bu2);
+			//清除id
+			tr1.id = ""
+			td4.id = ""
+			
+
+
+		}
+
+	</script>
+
+</body>
+</html>

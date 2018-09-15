@@ -1,0 +1,139 @@
+1.url
+	1.注意：
+		如果一个访问路径能够匹配到多个url的时候，那么值找匹配的第一个url去执行
+	2.url传参
+		1.通过正则的子组传参
+		2.使用url（）第三个参数 ---字典
+			dict{
+				"name":"sa"
+				"age":"25"
+			}
+			url(r"^show/$",show_views,dict)
+			views.py
+			def show_viwes(request,name,age)
+2.Django中的应用
+	1.、说明是引用
+		应用就是网站中一个独立的模块程序
+		在Django中主目录一般不处理用户的具体请求，主目录主要桌的是项目初始化以及请求的分发，而具体的请求由
+		各个应用完成
+	2.创建应用：
+		1.指令./manage.py startapp 应用名称
+		2.在settings.py中进行注册
+			在INSTALL_APPS中追加应用名称
+			INSTALL_APPS[
+				"django.contrib.addmin",
+				"自定义的名称"
+			]
+		3.练习：
+			1.创建新项目 netease
+			2.创建index应用，并注册
+			3.创建一个sport 并注册
+			4.创建music 并注册
+			5.创建news并注册
+			6.启用超级管理员----./manage.py createsuperuser
+	3.应用的结构组成
+		1.migrations目录
+			存放的是数据库的中间文件
+		2.__init__.py
+			应用的初始化文件
+		3.admin.py
+			应用的后台管理文件
+		4.app.py
+			应用的属性配置文件
+		5.models.py
+			models 与模型相关的配置文件
+		6.tests.py
+			测试模块
+		7.views.py
+			定义视图的文件
+3.Django中的模板
+	1.什么是模板：
+		是要动态呈现给用户的网页内容
+		模板的本质是网页-前后端结合的网页
+	2,。模板的设置
+		在settings.py中，TEMPLATES变量
+		1。BACKEND:指定模板的搜索引擎
+		2.DIRS：指定模板的存放目录们
+			如果dirs中为空的话，那么Django会自动的到每个应用中搜索一个叫templates的目录作为模板存放目录
+		3APP_DIRS
+			True：优先从dirs指定的目录中查找模板，如果没有找到的话，在搜索应用中的Templates
+	3.模板的加载方式
+		1.使用loader获取模板，通过HttpResponse进行响应
+			from Django.template import loader
+			def index_views(request):
+				1.通过loader加载模板
+				t = loader.get_template("模板名称")
+				2,。将模板渲染成字符串
+				html=t.render()
+				3.通过httpresponse响应给客户端
+				return HttpResponse(html)
+		2.使用render直接加载并返回模板
+			def index_views(request):
+				return render(request,'模板名称')
+	4.模板的语法：
+		1.变量
+			1.作用：允许将后端的数据传递给模板中进行显示
+			2.Django中允许作为变量传递给模板的数据类型
+				字符串，数字，列表，元组，字典，函数，对象
+			3.变量的语法：
+				变量们必须封装到字典中，然后才能传递给模板
+				1.使用loader加载模板
+				dic={
+					'变量1'："值1"
+					'变量2'："值2"
+					'变量3'："值3"
+					'变量4'："值4"
+					..........
+				}
+				loader.get_template("模板名称")
+				渲染成字符串时，需要传递变量字典到模板中
+				html = t.render(dic)
+				return HTTPResponse（html）
+				2.使用render加载模板
+				 dic = {
+				 	"变量1":"值1"
+				 	"变量2":"值2"
+				 	"变量3":"值3"
+				 }
+				 return render(request,"模板名称",dic)
+			4.在使用中使用变量
+				{{变量名}}
+		2.标签
+			1.作用：将服务器中的功能嵌入到模板中
+			2.语法：
+				{% 标签内容 %}
+		3.标签详解
+			1.comment 标签
+				{% comment %}
+				{% endcomment %}
+				作用：在服务器端就被注释的内容，不会被渲染到客户端
+			2.for标签
+				作用：循环遍历 列表，字典，元组
+				语法：{% for 变量 in 列表 | 字典 | 数组 %}
+					  {% endfor %}
+				循环中允许使用forloop 内置变量来获取循环相关的信息
+					forloop.counter:记录当前循环的次数，从1开始
+					forloop.counter0:
+					forloop.first:判断是否为第一个元素
+					forloop.last:判断是否为最后一个元素
+			3.if标签
+				1.if
+					{% if 条件 %}
+						条件满足时执行的内容
+					{% endif %}
+				2.if...else
+					{% if 条件 %}
+						满足时执行的内容
+					{% else %}
+						不满足时执行的内容
+					{% endif %}
+				3.if ..elif...else
+					{% if 条件1 %}
+						满足条件1的执行的内容
+					{% elif 条件2 %}
+						满足条件2执行的内容
+					{% elif 条件3 %}
+						满足条件3执行的内容
+					{% else %}
+						不满足条件执行的内容
+					{% endif %}

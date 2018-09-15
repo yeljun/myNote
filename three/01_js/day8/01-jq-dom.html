@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ddd</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		.red{
+			color: red;
+		}
+		.orangeBack{
+			background-color: orange;
+		}
+		.hide{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<input type="text" name="text" id="uname">
+	<button onclick="btn_show()">显示</button>
+	<button onclick="btn_class()">样式</button>
+	<button onclick="btn_remove()">删除</button>
+	<button onclick="btn_hide()">显示/隐藏</button>
+	<div id="uname_show"></div>
+	<script src="../day7/jquery-1.11.3.js"></script>
+	<script type="text/javascript">
+		function btn_hide() {
+			$("#uname_show").toggleClass("hide")
+		}
+		function btn_remove() {
+			//$("#uname_show").removeClass("red")//删除一个class属性
+			$("#uname_show").removeClass() //输出所有class属性
+
+		}
+		function btn_show() {
+			$("#uname_show").html("<h1>"+$("#uname").val()+"</h1>");
+
+		}
+		function btn_class() {
+			//为uname-show增加class：red，orangeback
+			$("#uname_show").addClass("red").addClass("orangeBack");
+		}
+
+	</script>
+</body>
+</html>

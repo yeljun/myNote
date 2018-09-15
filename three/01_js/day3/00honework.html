@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>doc</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<script>
+		var year = prompt("year:");
+		var mouth = Number(prompt("mouth:"));
+		var day = Number(prompt("day"));
+		var totalDays=0;
+		//1900开始到year-1年为止共有多少年
+		var i = 1900;
+		while (i<year){
+			totalDays+=365;
+			if (i % 4 == 0 && i % 100 != 0 || i % 400 == 0) {
+				totalDays+=1;
+			}
+			i++;
+		}
+		//计算year年的从1月开始到mouth-1月为止共有多少天，累加到totaldays后面
+		var i = 1;
+		while(i<mouth){
+			switch(i){
+				case 1:
+				case 3:
+				case 5:
+				case 7:
+				case 8:
+				case 10:
+					totalDays+=31;
+					break;
+				case 4:
+				case 6:
+				case 9:
+				case 11:
+					totalDays+=30;
+					break;
+				case 2:
+					if (i % 4 == 0 && i % 100 != 0 || i % 400 == 0) {
+						totalDays+=1;
+					}
+					totalDays+=28;
+			}
+			i++
+		}
+		totalDays+=day;
+
+		var date= totalDays % 7;
+		console.log("星期",date)
+
+	</script>
+</body>
+</html>

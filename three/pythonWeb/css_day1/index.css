@@ -1,0 +1,39 @@
+/*css选择器*/
+div{
+	width: 300px;
+	height: 300px;
+	background-color: purple;
+	font-size: 24px;
+	color:pink;
+}
+h1{
+	width: 300px;
+	height: 50px;
+	background-color: cyan;
+	color: blue;
+}
+p{
+	width: 300px;
+	height: 30px;
+	background-color: #666666;
+}
+span{
+	width: 100px;
+	height: 100px;
+	background-color: red;
+}
+strong{
+	width: 50px;
+	height: 20px;
+	background-color: blue;
+}
+i{
+	width: 100px;
+	height: 100px;
+	background-color: green;
+}
+img{
+	width: 700px;
+	height: 700px;
+	background-color: #888888;
+}

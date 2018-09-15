@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>doc</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<!--行内样式-->
+	<div style="width: 300px;height: 300px;background-color:rgb(100,100,50)"></div>
+
+	<p style="width: 500px;height: 50px;background-color: pink;color: blue;font-size:32px;font-weight: bold;" >
+		一段文本
+	</p>
+	<h1>一段文本</h1>
+	<div style="width: 500px;height: 500px;background-color: orange;color: #FF0000;font-size: 24px;font-weight: bold;">
+		练习
+	</div>
+
+</body>
+</html>

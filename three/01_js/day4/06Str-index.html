@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ddd</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function checkEmail() {
+			var email = prompt("email");
+			var atIndex = email.lastIndexOf("@");
+			var dotIndex = email.lastIndexOf(".");
+			if (atIndex > -1 && dotIndex > atIndex) {
+				alert("格式正确");
+			}else{
+				alert("格式不正确");
+			}
+			var uname = email.substring(0,atIndex);
+			alert(uname);
+			var fws = email.substring(atIndex+1,dotIndex);
+			alert(fws);
+		}
+		function getBirth() {
+			//222801199012011711
+			var idnumber = prompt("省份证号");
+			if (idnumber.length==18) {
+				var birth_year = idnumber.substring(6,10);
+				var birht_mouth= idnumber.substring(10,12);
+				var birht_day= idnumber.substring(12,14);
+
+			}else{
+				alert("省份证号不正确")
+			}
+			alert("你的生日是"+birth_year+"年"+birht_mouth+"月"+birht_day+"日")
+		}
+		// var input = prompt("str:")
+		// //yeljun@qq.com
+		// var s1 = input.lastIndexOf(".")
+		// var s2 = input.lastIndexOf("@")
+		// if (s1>s2) {
+		// 	console.log("合法")
+
+		// }else{
+		// 	console.log("不合法")
+		// }
+	</script>
+	<button onclick="checkEmail();">邮箱</button>
+	<button onclick="getBirth();">birth</button>
+
+</body>
+</html>

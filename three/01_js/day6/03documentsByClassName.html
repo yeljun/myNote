@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ssssss</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<div id="poem1">
+		<h3 class="title">春晓</h3>
+		<p>春天不洗澡，</p>
+		<p>处处蚊子咬。</p>
+		<p>夜来巴掌声，</p>
+		<p>不知死多少！</p>
+		
+	</div>
+	<div id="poem2">
+		<h3 class="title">游子吟</h3>
+		<p>慈母手中线</p>
+		<p>游子身上衣</p>
+		<p>临行密密缝</p>
+		<p>意恐迟迟归</p>
+		<p>谁言寸草心</p>
+		<p>报得三春晖</p>
+	</div>
+	<button onclick="getAllp();">all p</button>
+	<button onclick="getPoem1p();">poem1---p</button>
+	<button onclick="getTitle();">class=Title</button>
+	<script src="../day5/common.js"></script>
+	<script type="text/javascript">
+		function getTitle() {
+			var titleArr = document.getElementsByClassName("title")
+			for (var i = 0; i < titleArr.length; i++) {
+				titleArr[i].style.fontSize = "48px";
+			}
+		}
+		function getPoem1p() {
+			var poem1 = $("poem1");
+			var pArr = poem1.getElementsByTagName("p")
+			console.log(pArr)
+			for (var i = 0; i < pArr.length; i++) {
+				pArr[i].style.backgroundColor = "red";
+				pArr[i].style.width="100px";
+
+			}
+
+		}
+		function getAllp() {
+			var pAll = document.getElementsByTagName("p")
+			console.log(pAll)
+			for (var i = 0; i < pAll.length; i++) {
+				pAll[i].style.color = "green";
+				pAll[i].style.fontWeight = "bold";
+			}
+		}
+	</script>
+
+</body>
+</html>

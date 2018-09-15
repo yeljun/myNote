@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>docment</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<table>
+		<!--表格的结构分为thread tbody tfoot
+		不写结构的话，所有的内容都会添加到tbody中
+		-->
+		<thead>
+			<!--表格头部
+			可以将若干行归为一组，作为表格的头部信息
+			-->
+			<tr>
+				<td>头部</td>
+			</tr>
+		</thead>
+		<tbody>
+			<!--表格的主体信息，有行和单元格构成
+			-->
+			<tr>
+				<td>主体</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td>尾部</td>
+			</tr>
+		</tfoot>
+
+
+
+	</table>
+	<hr>
+	<table border="1x" width="200" height="300">
+		<!--表格的标题 <caption>必须作为table标签的第一个子元素-->
+		<caption>人员信息表</caption>
+		<tr>
+			<!--th跟td相似，但是自带居中和加粗的效果，可以用首行-->
+			<th>姓名</th>
+			<th>年龄</th>
+		</tr>
+		<tr>
+			<td>张思睿</td>
+			<td>20</td>
+		</tr>
+	</table>
+	
+
+</body>
+</html>

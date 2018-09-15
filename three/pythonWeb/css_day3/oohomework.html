@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>doc</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		body{
+			margin: 0;
+
+		}
+		td{
+			padding-right: 30px;
+		}
+		.uiput{
+			width: 298px;
+			height: 38px;
+			border:1px solid #ccc;
+			padding: 0px 12px;
+			/*取消轮廓线*/
+			outline: none;
+
+			/*默认文本尺寸较小，手动调整*/
+			font-size: 26px;
+
+		}
+		.rightText{
+			text-align: right;
+		}
+		span input{
+			width: 18px;
+			height: 18px;
+			/*与其他元素的对齐方式*/
+			vertical-align: middle;
+		}
+		span{
+			margin-right: 50px;
+		}
+		a{
+			color: #999;
+		}
+		.login,.regist{
+			width: 145px;
+			height: 38px;
+			border:1px solid #64a131;
+			border-radius: 5px;
+			/*字体大小和居中
+			按钮文本默认水平居中显示*/
+			font-size: 18px;
+		}
+		.login{
+			background-color: #64a131;
+			color: white;
+		}
+		.regist{
+			background-color: #f5ffed;
+			color: #7bae55;
+		}
+
+
+	</style>
+</head>
+<body>
+	<form action="login" method="get">
+		<table>
+			<tr>
+				<td class="rightText">手机号</td>
+				<td><input type="text" name="uphone" class="uiput"></td>
+			</tr>
+			<tr>
+				<td class="rightText">密码</td>
+				<td><input type="password" name="upwd" placeholder="请输入6-20位号码字符" class="uiput"></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>
+					
+					<span><input type="checkbox" name="isSave" checked>记住密码</span>
+					<a href="#">忘记密码</a>
+					<a href="#">快捷登录</a>
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>
+					<input type="submit" name="login" value="登录" class="login">
+					<input type="button" name="regist" value="注册会员" class="regist">
+				</td>
+			</tr>
+		</table>
+	</form>
+
+</body>
+</html>
+
+

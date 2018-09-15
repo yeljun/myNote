@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ddd</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<select id="selPro">
+		<option value="-1">====请选择====</option>
+		<option value="0">湖北</option>
+		<option value="1">湖南</option>
+		<option value="2">河南</option>
+		<option value="3">河北</option>
+	</select>
+	<select id="selCity"></select>
+	<script src="../day5/common.js"></script>
+	<script type="text/javascript">
+		var cities = [
+			["武汉","恩施","十堰","随州"],
+			["长沙"],
+			["郑州"],
+			["石家庄"]
+		];
+		function loadCity() {
+			var value = $("selPro").value;
+			var opt = "";
+			if (value != -1) {
+				//根据value 获取出数组，循环遍历，构建option
+				for (var i = 0; i < cities[value].length; i++) {
+					var city = cities[value][i];
+					opt += "<option value = '"+i+"'>"+city+"</option>";
+				}
+				$("selCity").innerHTML = opt;
+			}else{
+				var opt = "<option value = '-1'>====请选择====</option>";
+				$("selCity").innerHTML = opt;
+			}
+		}
+		window.onload = function () {
+			/*
+				当selpro选项发生改变
+			*/
+			loadCity();
+			$("selPro").onchange = function () {
+				loadCity();
+			}
+			
+		}
+	</script>
+
+</body>
+</html>

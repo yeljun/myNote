@@ -1,0 +1,217 @@
+1,数组
+    1，常用的api
+    	1，toString()
+    	    作用：将数组转换为字符串，默认是将数组的元素使用，连接成字符串在进行返回
+    	    eg:
+    	       var arr = ["三国演义","红楼梦","水浒传","西游记"];
+    	       console.log(arr.toString());
+    	       结果 ：三国演义,红楼梦,水浒传,西游记
+    	2，join(seperator)
+    		作用：将数组的元素使用seperator字符串拼接并返回
+    		var arr = ["三国演义","红楼梦","水浒传","西游记"];
+    		var ret = arr.join("-");
+    		ret:三国演义-红楼梦-水浒传-西游记
+    	3,reverse()
+    	    作用：将数组进行翻转
+    	    注意：该函数会改变数组现有的结构
+    	    弹框中录入数字
+    	    将数字转换为二进制
+    	4,sort()
+    	   1 作用
+    	      对现有的数组的内容进行排序
+    	      默认是按照元素的Unicode码进行排序的
+    	    2，注意
+    	       该函数会改变现有数组的内容
+    	    3，允许通过自定义的排序规则（排序函数）来制定数字的排序方式
+    	       语法：arr.sort(排序函数);
+    	       1,升序的排序函数
+    	          function sortAsc(a,b){
+    	          	//通过一个返回值表示a,b的大小关系
+    	          	// 返回值为正数，说明a>b;
+    	          	      //要交换两个数的位置
+    	          	//返回值为0，说明a=b;
+    	          	      //两个数子不动
+    	          	//返回值为负数.书名a<b;
+    	          	return a-b;
+    	          }
+    	          arr.sort(sortAsc);
+    	    练习，声明一个全局数组
+    	         网页中穿件量按钮
+    	            1，升序：点击时数组升序并打印输出
+    	            2，降序，点击树数组降序并打印输出
+    	5,进出栈操作
+    	    1，push()
+    	       入栈（压栈），向数组添加新的元素，并返回新数组的长度
+    	       等同于:arr[arr.length] = "";
+    	    2,pop()
+    	        出栈（弹栈），删除并返回数字尾部的元素
+    	    3,unshift()
+    	         向数组的头部添加新元素 并返回新数组的长度
+    	    4，shift()
+    	         删除并返回数组头部的元素
+    2,二维数组
+        1. 声明二维数组
+           	var names = [["孙悟空","猪八戒","沙师弟","唐僧"],["潘金莲","马蓉","李晓路"]];
+           	var	uname = names[1][1];
+***************************
+2,字符串  --string
+	1，声明字符串
+		1，var str1 = "字符串1";
+		   var str2 = String("字符串2");
+		   var str3 = new String("字符串3");
+		2,length 属性
+		   作用：返回当前字符串的长度
+		3.String API
+		    1，大小写转换函数
+		        1.toUpperCase()
+		           返回字符串的完全大写
+		        2,toLowerCase()
+		           返回字符串的完全小写形式
+		        练习：
+		           模拟验证码的生成和验证
+		           1，创建一个数组，初始化若干数据 英文大小写，数字
+		           2，生成一个4位的随机码，验证码需要从数组中获取
+		               Math.random()  ----生成一个0-1之间的随机数（取不到1）
+		           3，将随机生成的验证码字符串用过prompt展示给用户
+		           4，比较用户输入的字符和生成的验证码是否一致并给出提示
+		              （忽略大小写）
+		    2,去掉字符串两端空格
+		        方法：trim()
+		        注意：该方法不会改变现有字符串，是将去掉空格后的字符串进行返回
+		    3，获取指定位置的字符
+		        1，获取指定位置的字符
+		           方式：charAt(index)
+		             var str = 'hello world'
+		             var s = str.charAt(3);
+		             console.log(s) //l
+		        2,获取指定为值的Unicode码
+		          方法：charCodeAt(index)
+		              var str = 'hello world';
+		              var code = str.charCodeAt(6);
+		              输出的数w
+		    4，检索字符串
+		        1.indexOf(value,fromIndex)
+		           value:查找的子字符串
+		           fronIndex：从哪个位置开始查找，如果省略，则从第一个字符处开始查找
+		           返回值：返回子字符串第一次出现的下标，如果没有查询到子字符串的话就返回-1 
+		           var str = 'hello World';
+		           var r = str.indexOf("l")  /r=2
+		           var r = str.indexOf("l",7) ---r=9
+		        2,lastIndexOf(value,fromIndex)
+		           作用：查找value 最后一次出现的下标
+		           注意：该函数的查找方式是从后往前查
+		              var str = 'hello world';
+		              var r =str.lastIndexOf("l");  r=9
+		              r = str.lastIndexOf("l",7);  r=3
+		        练习
+		           判断一个字符串是够满足邮箱格式
+		           1.@符号
+		           2字符串中由.
+		           3,最后一个点必须出现在@之后
+		    5,截取子字符串
+		        函数：substring(start,end)
+		        作用:返回从start到end-1之间的字符串，如果省略end的话，则截取到整个字符串的尾部
+		        var str = 'hello world';
+		        var ret = str.substring(5,9);
+			    练习：
+			       1.从指定的邮箱中提取用户名
+			       2.从指定邮箱中提取服务商
+			       3，从身份证中提取生日
+			          生日：1995年12月05日
+			6,分割字符串
+			    作用：将具备特殊的连接符的字符串拆成字符串数组
+			    函数：split(seperator)
+			7,模式匹配
+			    1,作用
+			         配合子字符串和正则表达式完成字符串的查找，替换
+			    2，正则表达式
+			        语法：
+			           /正则表达式/修饰符
+			           修饰符：
+			              i:ignorecase(忽略大小写)
+			              g:global (全局匹配)
+			              m:multiple(允许多行匹配)
+			            eg.
+			            	1./\d{2,6}/g 2-6位数字
+			            	2./你打吗/g
+			    3,函数
+			        1，replace(substr/regexp,replacement)
+			            在一个字符串中，将substr或满足regexp格式的字符串替换成replacement
+			        2,match(substr/regexp)
+			            按照之地当的子字符串或正则表达式进行匹配，并返回满足格式的子字符串数组
+*************************
+3.RegExp 对象
+    1.创建RegExp对象
+        1 var reg = /正则表达式/修饰符
+         var  reg = /文大爷/gim
+        2，var reg = new RegExp("匹配模式","修饰符")
+           var reg = new RegExp("^\\d{6}$",'gim');
+    2,RegExt常用方法
+        1，test(string)
+            string:要验证的字符串
+            如果string满足reg对象的格式的话，则返回true，否则返回false
+********************
+4,Math 对象
+	1，属性
+		Math.PI
+		Math.E
+	2，方法			            
+		Math.sqrt(x):开平方
+		Math.log(x)：求对数
+		Math.pow(x，y) x的y次方
+    3，数值函数：
+        abs()
+        max()
+        min()
+        random()
+        round(x) 将x 四舍五入到整数
+*********************
+5，Date 对象
+    1，作用：
+        获取客户端的日期时间
+    2，创建Date对象
+        1，获取当前的日期对象
+        	var date =new Date();
+        2,初始化自定义日期时间对象
+        	var date = new date("2014/4/14 14:14:14") 
+    3,方法：
+        1，读取或设置 当前事假内的毫秒数
+        	1.getTime()
+        	  	返回自1970-1-1 00：00:00 到date所经过的毫秒数
+        	2，setTime（）
+        	  根据给定的毫秒数，结合1970-1-1 计算日期时间
+        2，读取时间分量
+            1，getFullYear()
+            	获取当前时间的年份
+            2，getYear()
+             	返回自1900以来到当前日期对象所经过的年数
+            3，getMonth()
+                返回0-11的数字来表示1-12月
+            4，getDate()
+                返回date对象所对应的日
+            5，getDay()
+                返回date对象所对应的星期
+            6，获取时间
+                getHours()  获取小时数
+                getMinutes() 获取分钟数
+                getSeconds() 获取秒数
+                getMilliseconds() 获取毫秒
+            7，转换为字符串
+                1，toString()
+                2,toLocaleString() 将日期对象转换为本地字符串
+                3，toLocaleTimeString()
+                   转换成本地时间字符串(十分秒)
+                4，toLcalDateString()
+                   转换成本地时间字符串 年月日
+
+
+
+
+
+
+
+
+
+
+
+

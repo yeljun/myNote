@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>aaa</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function er() {
+			var input = Number(prompt("number"));
+			var arr = []
+			do{
+				arr[arr.length]=input % 2;
+				input = parseInt(input / 2);
+			}while(input!=0);
+			arr.reverse();
+			var ret = arr.join("");
+			console.log(arr);
+		}
+		function sortarr(){
+			var arr = [12,3435,54,2346,34,100,1024];
+			arr.sort();
+			console.log(arr)
+		}
+	</script>
+	<button onclick="er()">aaaa</button>
+	<button onclick="sortarr()">bbbbb</button>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ddd</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		.red{
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<form action="/" method="post">
+		<p>
+			用户名：
+			<input type="text" name="uname" id="uname">
+			<span></span>
+		</p>
+		<p>
+			密码：
+			<input type="password" name="upwd" id="pwd">
+			<span></span>
+		</p>
+		<p>
+			重复密码：
+			<input type="password" name="upwd2" id="pwd2">
+			<span></span>
+		</p>
+		<p>
+			<input type="submit" name="sub" id="conf">
+			<button id="thisTest">按钮</button>
+		</p>
+
+	</form>
+	<script src="../day7/jquery-1.11.3.js"></script>
+	<script type="text/javascript">
+		//获取焦点
+		/*
+
+		检查用户名称是不是6-18位，通过返回true，不通过返回false
+		*/
+		function checkUname() {
+			var len = $("#uname").val().length;
+			if (len>=6 && len<=18) {
+				$("#uname").next().html("通过");
+				return true; 
+			}else{
+				$("#uname").next().html("用户名必须是6-18");
+				return false;
+			}
+		}
+		/*
+		*dom树加载完成后去绑定事件
+		*/
+		$(function () {
+			$("#uname").blur(checkUname);
+		})
+		function checkUpwd() {
+			var len = $("#pwd").val().length;
+			if (len>=6) {
+				$("#pwd").next().html("验证通过");
+				return true;
+			}else{
+				$("#pwd").next().html("密码必须是6-18位");
+				return false;
+			}
+		}
+		$(function () {
+			$("#pwd").blur(checkUpwd);
+		})
+		function checkCpwd() {
+			var upwd = $("#pwd").val();
+			var cpwd = $("#pwd2").val();
+			if (upwd ==cpwd) {
+				$("#pwd2").next().html("验证通过")
+				return true
+			}else{
+				$("#pwd2").next().html("两次密码不一致")
+			}
+		}
+		$(function () {
+			$("#pwd2").blur(checkCpwd);
+		})
+		$(function() {
+			$("#uname").blur(checkUname);
+			$("#pwd").blur(checkUpwd);
+			$("#pwd2").blur(checkCpwd);
+			$("form").submit(function () {
+				return checkUname() && checkUpwd() && checkCpwd()
+			});
+		});
+		$("#thisTest").click(function () {
+			console.log($(this).parent());
+		})
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>作业</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<table width="657px" height="383" align="left">
+	<form action="xx.php" method="get">
+		<caption><h1>增加管理员</h1></caption>
+		<tr align="left">
+			<td width="100" align="center">姓名:</td>
+			<td width="280"><input type="text" name="uname" maxlength="10" style="width:275px;height:20px"></td>
+			<td align="left">10个字符以内</td>
+		</tr>
+
+		<tr align="left">
+			<td align="center">密码:</td>
+			<td><input type="password" name="upwd" maxlength="10" style="width:275px;height:20px"></td>
+			<td align="left">10个字符以内</td>
+		</tr>
+		<tr align="left">
+			<td align="center">性别:</td>	
+			<td>
+				<input type="radio" name="gender" value="famale" id="famale">
+				<label for="famale">女士</label>
+				<input type="radio" name="gender" value="male" id="male">
+				<label for="male">男士</label>
+			</td>
+			<td></td>
+		</tr>
+		<tr align="left">
+			<td align="center">角色:</td>
+			<td>
+				<input type="checkbox" name="hobby">超级管理员
+				<br>
+				<input type="checkbox" name="hobby">账单管理员
+			</td>
+			<td>至少一个角色</td>
+			
+		</tr>
+		<tr align="left">
+			<td align="center">头像:</td>
+			<td>
+				<input type="file" name="uimg">
+			</td>
+			
+		</tr>
+		<tr align="left">
+			<td>
+				
+			</td>
+			<td>
+				<button  type="buttom" name="save">保存</button>
+				<button type="button" name="reset">重填</button>
+			</td>
+			
+		</tr>
+		
+	</form>
+	</table>
+
+</body>
+</html>

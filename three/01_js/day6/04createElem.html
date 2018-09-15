@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>dddd</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<div id="main"></div>
+	<button onclick="createElem();">创建元素</button>
+	<script src="../day5/common.js"></script>
+	<script type="text/javascript">
+		function createElem() {
+			//创建一个div，文本为：动态创建的div，id属性值为container，文本颜色为红色，加粗效果
+			var div = document.createElement("div");
+			div.innerHTML = "动态创建的div";
+			div.id = "container";
+			div.style.color = "red";
+			div.style.fontWeight="bold";
+			//将div加载到网页中
+			// document.body.appendChild(div)
+			$("main").appendChild(div);
+
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ddd</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<form>
+		<p>
+			用户名称：
+			<input type="text" name="uname" id="uname">
+			<span id="show_text"></span>
+		</p>
+		<p>
+			用户密码：
+			<input type="password" name="upwd" id="upwd">
+			<span id="show_upwd"></span>
+
+		</p>
+		<p>
+			确认密码：
+			<input type="password" name="upwd1" id="upwd1">
+			<span id="show_upwd1"></span>
+		</p>
+		<p>
+			<input type="submit" name="submit" id="sub">
+		</p>
+	</form>
+	<script src="../day5/common.js"></script>
+	<script type="text/javascript">
+		function yz(){
+
+		}
+		window.onload = function () {
+			$("sub").onclick = function(){
+				return false;
+			}
+		}
+		$("uname").onfocus = function(){
+			$("show_text").innerHTML = "用户名称必须是6-18位字符";
+
+		}
+		$("uname").onblur = function(){
+			if (this.value.lenght>=6 && this.value.lenght<=18) {
+				$("show_text").innerHTML= '验证通过';
+
+			}else{
+				$("show_text").innerHTML= '用户名称必须是6-18位字符';
+				$("show_text").style.color = "red";
+				$("sub").onclick = function(){
+				return false;
+				}
+			}
+		}
+
+
+		$("upwd").onfocus = function(){
+			$("show_upwd").innerHTML = "用户名称必须是6-18位字符";
+
+		}
+		$("upwd").onblur = function(){
+			if (this.value.lenght>=6) {
+				$("show_upwd").innerHTML= '验证通过';
+				
+			}else{
+				$("show_upwd").innerHTML= '用户名称必须是6-18位字符';
+				$("show_upwd").style.color = "red";
+				$("sub").onclick = function(){
+				return false;
+				}
+			}
+		}
+		$("upwd1").onfocus = function(){
+			$("show_upwd1").innerHTML = "用户名称必须是6-18位字符";
+
+		}
+		$("upwd1").onblur = function(){
+			if (this.value.lenght>=6) {
+				$("show_upwd1").innerHTML= '验证通过';
+				
+			}else{
+				$("show_upwd1").innerHTML= '密码必须是大于6位字符';
+				$("show_upwd1").style.color = "red";
+				$("sub").onclick = function(){
+				return false;
+				}
+			}
+		}
+
+	</script>
+</body>
+</html>

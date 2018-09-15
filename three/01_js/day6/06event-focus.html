@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ddd</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<p>
+		用户名称:<input type="text" name="uname" onfocus="txtFocus()" onblur="txtBlur()" id="uname">
+		<span id="show"></span>
+	</p>
+	<p>
+		用户密码:
+		<input type="password" name="pwd" id="pwd">
+		<span id="upwd_show"></span>
+	</p>
+	<script src="../day5/common.js"></script>
+	<script type="text/javascript">
+		function txtFocus() {
+			$("show").innerHTML = "请输入6-18位的用户名";
+		}
+		function txtBlur() {
+			var val = $("uname").value;
+			
+			if (val.length >= 6 && val.length <=18) {
+				$("show").innerHTML = "通过";
+				$("show").style.color = "green";
+			}else{
+				$("show").innerHTML = "用户名必须是6-18位的字符";
+				$("show").style.color = "red";
+			}	
+		}
+		//获取id为upwd的元素，并绑定focus事件
+		$("pwd").onfocus = function () {
+			$("upwd_show").innerHTML = "请输入密码";
+		}
+		$("pwd").onblur = function () {
+			// var val = $("pwd").value;
+			// if (val.length >= 6 && val.length <=18) {
+			// 	$("upwd_show").innerHTML = "通过";
+			// 	$("upwd_show").style.color = "green";
+			// }else{
+			// 	$("upwd_show").innerHTML ="失败";
+			// 	$("upwd_show").style.color = "red";
+			// }
+			if (this.value.length>=6) {
+				$("upwd_show").innerHTML = "通过";
+				$("upwd_show").style.color = "green";
+			}else{
+				$("upwd_show").innerHTML ="失败";
+				$("upwd_show").style.color = "red";
+			}
+
+		}
+	</script>
+
+</body>
+</html>

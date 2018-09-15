@@ -1,0 +1,137 @@
+1.ajax
+	1.ajax:异步的js和xml
+	2.异步对象
+		XMLHTTPRequest
+		成员
+		1.open(method,url,asyn)
+		2.readyState
+			xhr的请求状态
+			0-4:4表示的是已经接收响应
+		3，status
+			服务器端响应状态
+			200：
+			表示服务器正常接收请求给出响应
+		4.responseText
+			表示响应回来的数据
+		5.onreadystatechange
+			每当readyState的值发生变化的时候要回来调用的函数，回调函数
+		6，send()
+			发送请求
+				get请求   send(null)
+				post请求  send('参数1=值1&参数2=值2')
+
+		7.setRequestHeader(name,content)
+			设置请求消息头
+			发送post请求时
+			xhr.setRequestHeader('Content-Type',‘application/x-www-form-urlencoded’）
+	3.使用ajax发送get请求
+		1，创建xhr
+		2，创建请求
+			如果有请求参数的话，要在url中体现出来
+		3，设置回调函数
+		4，发送请求
+	4，使用ajax发送post请求
+		1，创建xhr
+		2，创建请求
+		3，设置回调函数
+		4，设置请求消息头
+		    Content-Type
+		5，发送请求
+			一定要传递csrfmiddlewaretoken的值到服务器端
+2.JSON
+	1.JSON:JavaScript Object Notation
+	       js        对象     表现形式
+	  将复杂的数据按照js对象的格式进行响应
+	2.JSON表现
+		1，json可以表示单个对象
+			1.使用{}表示单个对象
+			2.在{}中使用key:value的形式来表示数据（属性）
+			3，在{}中的key必须使用""引起来
+			4.value如果是字符串的话也必须使用""引起来
+				var obj ={
+					"name":"范冰冰",
+					"age":40,
+					"gender":'女',
+				}
+		2，json可以表示一个数组
+			1,使用[]表示一个数组
+				在数组中允许包含若干普通数据或json对象
+				1.使用json数组表示普通数据
+					var arr =["范冰冰","张丰毅"]
+				2，使用json数组表示若干队形
+				   var arr =[
+				   		{
+				   		"name":"范冰冰",
+						"age":40,
+						"gender":'女',
+				   		},
+				   		{
+				   		"name":"李晨"，
+				   		"age"："42"，
+				   		"gender":"男"
+				   		}
+				   ]
+	3，后台处理json
+		1.前后台json数据交互流程(后--》前)
+			1.后台先获取数据
+				类型：
+					1，元组
+					2，列表
+					3，字段
+					4，QuerySet
+			2.在后台将数据转换为符合json格式的字符串
+			3，后台将json格式的字符响应给前端
+				return HttpResponse（json格式字符串）
+			4，在前端，将响应回来的json串解析成json对象
+		2，在Python（Django）中的json处理
+			1.元组，列表，字典
+				使用Python提供的json类就可以完成装换
+				import json
+				jsonStr = json.dumps(元组|列表|字典) 返回值是一个字符串
+			2.Django中查询结果集 -QuerySet
+				使用Django提供的序列化类完成QuerySet到json字符串的转换
+					from django.core import serializers
+					jsonStr=serializers.serialize("json",QuerySet)
+			3.Django中查询单个对象
+				1。entry.object.get(条件).查询单条数据
+				 用Entry.object.filter()来替换Entry.object.get()，替换后可以正常系列化
+				2.方案2
+					将Entry.object.get()转换成字典后在json.dumps()
+					class User(models.Model):
+						uname = models.CharField()
+						upwd =models.CharField()
+						....
+						def to_dict(self):
+							dic={
+								"uname":self.uname,
+								"upwd":self.upwd,
+								....
+							}
+							return dic
+				3.前端处理json对象
+					将后端响应回来的json字符串转换成json在js中：
+						var json对象 =json.parse(json字符串)；
+
+
+
+
+3.jquery Ajax
+	在jquery中提供了 原生ajax的封装操作
+	1.$obj.load()
+		用作：异步加载数据到$obj元素中
+		语法：$obj.load(url,data,collback)
+			url:异步请求的地址
+			data：传递给服务器端的数据(可选)
+			   可以传递普通的字符串
+			      "name=san&age=85"
+			   可以传递json
+			   		{
+			   			"name":"san",
+			   			"age":"85"
+			   		}
+			callback:异步请求完成后的回调函数
+				function(resText,statusText){
+					resText:响应数据
+					statusText:响应的状态文本
+				}
+

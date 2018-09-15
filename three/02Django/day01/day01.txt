@@ -1,0 +1,147 @@
+1.jq动画
+	1.基本显示，隐藏
+		$obj.show()/$obj.show(执行时长);
+		$obj.hide()/$obj.hide(执行时长);
+	2.滑动式显示，隐藏
+		$obj.slideDown()/$obj.slideDown(执行时长);
+		$obj.slideUp()/$obj.slideUp(执行时长);
+	3.淡入淡出式显示，隐藏
+		$obj.fadeIn()/$obj.fadeIn(执行时长)
+		$obj.fadeOut()/$obj.fadeOut(执行时长)
+2，jq插件
+	1.下载插件并引入（jq，插件文件，css文件）
+	2.结合当前网页修改css
+	3.去插件中修改数据（替换图片/图片名称）
+******************************************************************************
+==============================================================================
+1.Django 框架
+	1.web与服务器
+		1.web用户可以浏览的网页内容（HTML，css，js）
+		2.服务器：专门给用户提供服务
+			1.硬件与软件
+				硬件范畴
+				软件范畴：一个能够接受用户请求并给出响应的程序
+					1.Apache
+					2.TomCat
+					3.IIS（Internet information Service）
+					4.Nginx
+			2.服务器的作用
+				1.存储web上需要的信息
+				2.处理用户的请求request并给出响应response
+				3，执行服务端的程序
+			3.服务器与web之间的关系
+				web需要放在服务器上才能够被用户访问
+
+
+
+
+
+
+2.框架
+	1.是一个为了解决开放性问题而存在的一种结构，框架本身会提供一些基本的功能，我们只需要在基本功能上搭建属于自己的操作
+	2.python web框架
+		1.Django：重量级的web框架
+		2.Tornado：异步框架
+		3.Flask：轻量级
+3.Django 框架
+	1.Django
+		开源框架，2005发布，采用python编写，早期做新闻和内容管理的网站。Django本身提供；i强大的后台管理系统
+	2.Django的框架模式 - MTV
+		M:Models 层
+			模型层，负责数据库建模以及CRUD的操作
+		T:Templates 层
+			模板层，处理用户显示的内容，比如html
+		V:Views 层
+			视图层，处理与用户交互的部分内容
+
+		eg。
+		MVC：三层架构
+			M：Models 数据库交互
+			V：Views 视图层，处理用户显示内容
+			C：Controller，控制器层，处理与用户交互的部分
+	3.Django 官网
+		https://www.djangoproject.com/
+		http://djangobook.py3k.cn/2.0/ 中文文档
+4.Django 的使用
+	1.安装，查看已安装好的版本
+		终端 以及交互模式
+		交互模式中 import Django
+		django.VERSION
+		安装：
+		1.在线安装 ---pip3
+		sudo pip3 install django -----安装最新版本
+		sudo pip3 install django==1.11.8  安装指定的版本
+		2.离线安装
+			下载安装包
+			解压包
+			sudo python3 setup.py install
+	2.使用Django
+		1.创建文件目录，保存所有的django项目
+		django-admin 指令创建django项目
+		语法：django-admin startproject
+		2.启动服务，访问项目网站
+			manage.py--------启动项目（服务）
+			python3 manage.py runserver
+		3.访问网站
+			http://127.0.0.1:8000
+			http://localhost:8000
+	3.项目结构介绍
+		1.manage.py
+			负责执行Django中的各种操作
+				启动服务runserver
+				创建应用startapp
+				。。。
+		2.主目录（目录名称与项目名称一致）
+			1.__init__.py
+				项目的初始化文件，服务被启动时，该文件自被启动后被执行
+			2.urls.py
+				项目的基础url配置文件（路由配置文件）
+			3.wsgi.py
+				应用服务器配置文件
+			4.settings.py
+				项目的配置文件
+				1.BASE_DIR：或取当前项目的绝对路径
+				2.DEBUG：调试模式
+					开发过程：推荐使用True
+					上线运行的过程改为False
+				3ALLOWD_HOSTS
+					设置允许访问本项目的地址列表（localhost/127.0.0.1）
+					推荐写["*"]，表示任何该机器的地址都可以访问当前项目
+					如果允许被其他机器访问的话，启动 服务器时，必须使用：
+					./manage.py runserver 0.0.0.0:端口号
+				4.INSTALLED_APPS
+					指定已安装的引用，如果有自定义的话，需要在此注册
+				5.MIDDLEWARE
+					注册中间件
+				6.ROOT_URLCONF
+					指定项目的基础路由配置文件
+				7.TEMPLATES
+					指定模板的信息
+				8.DATABASE
+					指定数据库的信息
+				9.LANGUAGE_CODE
+					语言设置，如果需要中文的话，允许将值给该为zh-Hans
+				10.TIME_ZONE
+					指定时区，建议修改为 "Asia/Shanghai"
+	4.url的使用
+		1.urls.py
+			默认在主目录中，主路由配置文件，包含所有的地址映射
+		2.测试
+			1.在主目录中创建views.py
+			 作用：包含所有定义好的试图（处理程序）
+		3.url 函数
+			作用：为了匹配用户的访问路径
+			语法：
+				url（regex，views，kwargs=None，name=None）
+					regex：允许是正则表达式，匹配请求的url的
+					views：对应的视图处理函数
+					kwargs：字典，用来向views传参的，如果没有参数的话则可以省略
+					name：字符串类型，为url起别名，在地址反向查询时使用
+		4.通过url向视图传参
+			1.使用正则表达式传参
+				使用子组传参，一个子组是一个参数，要传递多个参数的话用多个子组 ---（）
+
+				#访问路劲是run/两位数字的时候交给run1_views去处理
+				url(r"^run/(\d{2})/$"),
+				url(r'^run/(\d{4})/(\d{2})/$',run2_views),
+

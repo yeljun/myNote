@@ -1,0 +1,122 @@
+1.HttpRequest
+	1.HttpRequest介绍
+		HttpRequest,在Django中是对请求对象的封装体现，会封装请求过程中所有的信息在Django中，HTTPRequest被封装成了request被自动传到了视图处理函数中
+	2.request中的主要内容
+		request.scheme:请求协议，
+		request.body:请求主体
+		request.path：请求路径（资源的具体路径）
+		request.get_host():请求的主机地址或者是域名
+		request.method:获取请求方法
+		request.GET：封装类GET请求方式提交的数据
+		request.POST:封装了POST请求方式提交的数据
+		request.COOKIES:封装了cookie的数据
+		request.META：封装了请求的元数据
+
+		['body', 'build_absolute_uri', 'close', 'content_params', 'content_type', 'csrf_processing_done', 'encoding', 'environ', 'get_full_path', 'get_host', 'get_port', 'get_raw_uri', 'get_signed_cookie', 'is_ajax', 'is_secure', 'method', 'parse_file_upload', 'path', 'path_info', 'read', 'readline', 'readlines', 'resolver_match', 'scheme', 'session', 'upload_handlers', 'user', 'xreadlines']
+			request.META.HTTP_REFERER:封装了请求的源地址 : 'http://127.0.0.1:8000/01_request/'
+	3.获取请求提交的数据
+		1.get请求方式;
+			request.GET['名称']
+
+			1.使用表单提交数据
+			<form></form>
+			2.通过超链接拼接查询字符串
+			<a   href='地址？参数1=值1&参数2=值2'></a>
+			此种方式属于http标准
+
+			django中，通过url传递参数
+			url(r'^01_test/(\d+)',test_views)
+			此中方式是非http标准的，属于django标准
+
+		<QueryDict: {'uname': ['tarena'], 'upwd': ['P@ssw0rd']}>
+		2.post请求方式
+			request.POST['名称']
+			CSRF ：Cross Site Request Forgery
+				跨站点伪装攻击
+			解决方案：
+				1.取消CSRF验证
+					删除settings.py中middleware中
+					CsrfViewMiddleware中间件
+				2.开放验证权限，无需验证，直接进入
+					在视图处理函数之上增加一个装饰器@csrf_protect
+				3.必须要通过验证后才能请求
+					在模板中<form>下的第一行增加：
+					{% csrf_token %}
+	4.Django中的表单处理
+		表单页面的get和post请求是由同一个视图（views）取处理的
+2.使用forms模块处理表单
+	1.forms模块的作用
+		通过forms模块，允许将表单与class相结合。允许通过class生成表单
+	2.使用forms模块
+	（除了表单之外的按钮必须另外写）
+		1，创建forms.py文件
+		2. 导入Django提供的forms
+			from Django import forms
+		3.创建class，一个class对应一个表单
+			class LoginForm(forms.Form)：
+				pass
+		4.在class中创建属性
+			一个属性对应一个表单控件
+	3.在模板中解析form对象
+		1.注意：
+			1.需要自定义<form>
+			2.需要自定义按钮<input Type='submit'>
+		2.处理方法
+			在视图中创建forms.form的对象，并发送到模板中
+				form = RemarkForm()
+				retrurn render(request,'xx.html',locals())
+
+			1.手动解析
+				在模板中：
+					{% for field in form %}
+						{{field}}:表示的就是控件
+						{{field.label}}表示的就是控件文本
+					{% endfor %}
+			2.自动解析
+				1.{{form.as_p}}
+					将form对象中的每个属性使用p标记包裹起来，再显示在网页上
+				2.{{form.as_ul}}
+					将form对象中的每个属性使用li标记包裹起来，在显示在网页上
+					注意：必须手动提供<ol></ol>或<ul></ul>
+				3.{{form.as_table}}
+					将form对象中的每个属性使用tr标记包裹起来
+					注意：必须手动提供<table></table>
+
+				练习：
+					1.创建一个数据库   -day07
+					2.在程序中创建一个Models  -Users
+						uname 
+						upwd
+						uage
+						uemail-
+						同步回数据库，并通过后台数据管理的方式插入几条测试数据
+					3创建forms.form类，表示登录的Form
+						用户名和密码两个控件（两属性）
+					4.form放在模板中解析成对应的控件自己提供<form>以及提交按钮
+					5，点击提交按钮时要验证用户名和密码的值是否正确
+	4.在视图中，通过formsForm自动获取表单数据
+		1.通过forms.Form的构造，接收post数据
+			form = xxxForm(request.POST)
+		2.需要让form通过验证后在取值
+			form.is_valid()
+				返回True：提交的数据已经用过验证，允许接收表单提交的数据
+				返回False：提交的数据验证未通过，无法取值
+		3，获取表达中的数据
+			通过form.cleaned_data（字典）接收提交的数据
+			{'uname': 'tarena', 'upwd': '1234567'}
+
+			request.POST
+			<QueryDict: {'uname': ['tarena'], 'upwd': ['1234567'], 'csrfmiddlewaretoken': ['ayOqf3GVQp1f11xIqUyl0lw65M9UcYoX0Z1KWIxrmIRIfdt9dROGzz23Z5QflBjB']}>
+		练习：创建RegisterForm，根据Users的属性，构建RegisterForm的属性
+			2.在模板中，根据registerForm，创建表单控件
+			3.提交数据时，在交给registerForm接收提交的数据，通过验证后，将数据插入到数据库中
+
+
+
+
+
+
+
+
+
+		

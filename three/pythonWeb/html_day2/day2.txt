@@ -1,0 +1,128 @@
+1，表格
+	<table></table>
+	创建行<tr></tr>
+	创建行中的单元格<td></td>
+    1， table属性
+        width
+        height
+        border 默认以像素为单位
+        bgcolor 颜色值表示可以用英文或者是十六进制的表示
+        align 设置表格在窗口中的位置 left center right
+        cellspacing 设置单元格与边框之间的距离
+        cellpadding 设置单元格内容与单元格边框之间的距离
+    2,  tr/td属性
+        width
+        height
+        bgcolor
+        align 设置单元格内容水平对齐方式 left center right
+        valign 设置单元格垂直方向的对齐方式 top middle bottom
+    3,  td独有属性
+        rowspan 设置单元格跨行合并 取值为数字，表示夸几行
+        celspan 设置单元格夸列合并 取值为数字，表示夸几列
+    4， 表格结构
+        <table>
+       		<thead>
+       			<tr>
+       				<td></td>
+       			</tr>
+       		</thread>
+       		<tbody>
+       			<tr>
+       				<td></td>
+       			</tr>
+       		</tbody>
+       		<tfoot>
+       			<tr>
+       				<td></td>
+       			</tr>
+       		</tfoot>
+        </table>
+        thread tbody  tfoot可以省略，如果不写则表格中所有的内容都会自动加入到tbody中
+        thead tfoot用来将一行或者是若干行分组，作为表格的头部和尾部信息
+    5， 表格标题及行首文本特殊样式
+        <table>
+       		<caption>表格标题</caption>
+       		<tr>
+       			<th></th>
+       		</tr>
+        </table>
+        <caption>可以用来设置表格标题，必须作为表格的第一个元素使用
+        th用法与td一样，自带的文本居中和字体加粗效果
+2， 表单
+    1，作用：向服务器发送数据
+    2，基本语法
+    	<from action="" method="">
+
+    	</from>
+    	action属性用来指定表单数据提交到服务器哪个文件，属性值为文件的路径
+    	method属性用来指定数据提交的方式常用 get/post
+    	注意：
+    	     get请求：数据会被拼接在url后面直接发送，安全性较低，数据大小受限，最大为2k
+    	     post请求：数据会被打包，单独发送，隐式提交给服务器，安全性高，数据大小不受限
+    3，表单控件（重点）
+        1，文本输入框和密码框
+            <input type="text" name="u_name" placeholder="提示文本" maxlength="20">
+            <input type="password" name="u_pwd">
+            type：属性用来指定控件的类型
+            name：属性定义控件的名称，缺少的话就会无法提交
+            placeholder 设置用户输入前的提示文本
+            maxlength设置用户输入文本的长度
+        2,单选和复选框
+        	<input type="radio" name="gender"/ value="m" checked>
+        	<input type="checkbox" name="hobby" value="sing">
+        	注意：
+        	radio  表示单选按钮
+        	CheckBox 表示复选按钮
+        	name属性用来定义控件名称并且分组，一组按钮的name属性必须一致
+        	value属性：用来设置控件的值，最终会发送给服务器
+        	checked属性设置按钮默认选中状态
+        3，隐藏域
+            隐式发送一些附加信息，用户不可见
+            <input type="hidden" name="u_id" value="101">
+            <input type="hidden" name="other" value="用户隐私">
+        4，文件上传
+        	<input type="file" name="uimg">
+        5,文本域
+        	<textarea name="uinfo" cols="20" rows="5"></textarea>
+        	cols指定文本域默认显示的列数，一行能够显示的英文字符量，输入中文会减半
+        	rows指定文本域默认显示的行数
+        	可以使用disabled属性禁用表单控件，使用于所有的表单控件
+        6，下拉菜单
+        	<selcet name="area">
+        		<option value="bj">北京</option>
+        	</selcet>
+        	下拉菜单分组
+        	<selcet name="address">
+        		<optgroup lable="河北省">
+        			<option value="sjz">石家庄</option>
+        		</optgroup>
+        		<optgroup lable="河南省">
+        			<option value="zhz">郑州</option>
+        		</optgroup>
+        	</selcet>
+        	注意：
+        	value属性值是最终发送给服务器的数据
+        	optgroup用来分组，通过lable属性设置组名
+        	option 用来设置具体的选项
+        7，提交和重置按钮 普通按钮
+        	1，提交按钮<input type="submit">
+        	   将表单数据发送给服务器
+        	2，重置按钮<input type="reset">
+        	   重置表单数据，恢复到初始状态
+        	3, 普通按钮<input type="button" value="点我"></input>
+        	    普通按钮需要通过value属性设置显示文本
+        	4，普通按钮<button type="submit"></button>
+        	   type可以取值submit reset button可以实现input按钮的功能
+        	   要添加标签文本显示在按钮上
+        8，label for ID
+        	<lable for="male">男</lable>
+            <input type="radio" value="male" id="male" name="gender">
+            使用lable标签显示文本，将lable的标签属性for 的属性设置为将要绑定的表单空间的id值
+             补充：
+            maxlength属性：用来设置输入框可输入的最大字符数
+        9，取色板
+        	<input type="color" name="colorpick">
+
+
+
+

@@ -1,0 +1,148 @@
+1.事件
+	1.状态事件
+		1.change事件
+			主要场合：使用在select中的每当选项发生改变时就会激发一次事件
+	2.事件对象 -event
+		1.什么是事件对象
+			全称：是将参数对象，简称为时间对象
+			任何一个事件被触发后，都会自动产生一个event对象.event对象中会包含与当前事件相关的一些属性和方法
+		2.获取event 对象
+			1.在html元素中绑定事件
+				<ANY on事件名=" btnClick(event参数)">
+				<script>
+					funcation btnClick(event){
+						event 表示事件的对象
+					}
+				</script>
+			2，在js中动态的为元素绑定事件
+				var d1 = document.getElementById("d1");
+				d1.onclick = funcation(event){
+					event表示的是事件对象
+				}
+			3，事件对象常用的属性
+				1事件源
+					1，什么是事件源
+						触发当前事件的元素是谁
+					2，获取时间源
+						通过event.target获取事件源
+						得到的是一个DOM事件对象
+				2.鼠标事件的属性
+					鼠标事件：mouseover mouseout mousemove，click，doubleclick
+					offsetX offsetY
+					获取鼠标在元素上的坐标点，以元素的左上角为（0,0）进行计算的
+				3,键盘事键
+					键盘类型：keydown，keypress，keyup
+					keydown，keypress事件中允许增加一个返回值，通知浏览器是否要正常处理按下的字符。返回值为true
+					则正常显示字符，返回值为false则不显示字符
+					1.keydown事件
+						只要按下键位就会触发keydown
+						属性
+							1.which
+								按下的键位码
+					2.keypress事件
+						只有字符输出时才会触发改事件
+						属性：
+							1.which
+								按下键位的ASCii码
+	3.事件冒泡
+		1.阻止事件冒泡
+			event.stopPropagation()
+************************************************************************
+jQuery
+1.jQuery介绍
+	jQuery是一个轻量级的js库 --- 被封装号的js文件，提供了更简便的元素操作方式
+
+	核心理念：Write Less Do More
+	jQuery版本:
+		jQuery 2.x  不再支持IE6,IE7,IE8
+		jQuery 1.11.x
+2.使用jQuery
+	1.引入jQuery文件
+		<script src="jquery-1.11.3.js"></script>
+		注意jQuery文件的引入操作必须要放在其他jQuery操作之前
+3.jQuery对象
+	1.jQuery对象
+		是由jQuery对页面元素进行封装后的一种体现
+		jQuery中锁提供的所有操作都只针对jquery对象，DOM对象不能用
+	2.工厂函数 - $()
+		作用;
+			1.能够获取jQuery对象
+			2.能够将DOM对象转为jQuery对象
+		语法：
+			$(选择器/DOM对象);
+				$()能够将选择器好DOM对象封装成jquery对象进行返回
+	3.DOM对象和jquery对象之间的转换
+		DOM对象：只能适应DOM提供的操作，不能使用jquery操作
+		jquery对象：只能使用jquery操作，不能使用DOM操作
+		1.将DOM对象转为jquery对象
+			语法：
+				var 变量 = $(DOM对象);
+				所有的jquery对象在起名的时候最好在变量名称之前+$,用于区分与dom对象的区别
+		2.将jquery对象转换为DOM对象
+			1.var dom对象 = jquery对象.get(0)
+			2.var dom对象 = jquery对象[0]
+4.jQuery选择器
+	1.作用
+	    获取页面上的元素们，返回值都是有jq对象所组成的数组
+	    语法:$("选择器");
+	2.选择选择器
+		1.基本选择器
+		2.层级选择器
+			1.$("selector1+select2")
+			名称：相邻兄弟选择器
+			作用：匹配紧紧跟在selecttor1后面且满足selecttor2选择器的元素
+			2.$("selector1~selector2")
+			名称：通用兄弟选择器
+			作用：匹配selector1后面的所有满足的selector2选择器的元素
+		3，基本过滤选择器
+			1.:fist
+				只匹配到到第一个元素
+			2.:last
+				只匹配到最后一个元素
+			3.：not(selector)
+			将满足selecttor选择器的元素排除出去
+			4.：odd
+				匹配偶数行元素（奇数下标）
+			5.：even
+				匹配奇数行元素（偶数下标）
+			6.:eq(index)
+				下标等于index的元素
+			7.:gt(index)
+				小标大于index的元素
+			8.lt(index)
+				下标小于index的元素
+		4.属性选择器
+			1.[attribute]
+				作用：匹配包含指定属性的元素
+				ex:$("div[id]");
+			2.[attribute =value];
+				ex:$("div[id=main]") --->$("#main")
+				$("[type = text]");
+			3.[attribute != value]
+				作用匹配属性值不是Value的所有元素
+			4.[attribute ^= value]
+				匹配属性值是以Value字符作为开始的元素
+			5.[attribute $= value]
+				匹配属性值为Value字符作为结尾的元素
+			6.[attribute *= value]
+				匹配属性值包含Value的元素
+		5.子元素过滤选择器
+			1.：first-child
+				匹配属于父元素中的首个子元素
+			2.：last-child
+				匹配父元素中的最后一个子元素
+			3.：nth-child（n）
+				匹配属于其父元素中的第n个父元素
+				
+
+
+
+
+
+
+
+
+
+
+
+

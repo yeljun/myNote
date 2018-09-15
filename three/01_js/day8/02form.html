@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>dddd</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		
+		table{
+			width: 600px;
+
+		}
+		td{
+			width: 140px;
+		}
+		input{
+			width: 80px;
+		}
+	</style>
+
+
+</head>
+<body>
+	<input type="text" name="buName" placeholder="商品名称" id="buName">
+	<input type="text" name="bujg" placeholder="商品价格" id="bujg">
+	<input type="text" name="buNum" placeholder="购买数量" id="buNum">
+	<button onclick="btn_buy();">购买</button>
+	<br>
+	<table>
+		<thead>
+			<tr>
+				<td>商品名称</td>
+				<td>商品价格</td>
+				<td>购买数量</td>
+				<td>操作</td>
+			</tr>
+		</thead>
+		<tbody id="tbody1">
+			
+		</tbody>
+	<script src="../day7/jquery-1.11.3.js"></script>
+	<script type="text/javascript">
+		function btn_buy() {
+			var $buName = $("#buName");
+			var $bujg = $("#bujg");
+			var $buNum = $("#buNum");
+			var obj_valName = $buName.val();//获取输入框中的值
+			var obj_valJg = $bujg.val();
+			var obj_valNum = $buNum.val();
+
+			//添加四个td标签
+			var $td1 = $("<td>"+obj_valName+"</td>");
+			var $td2 = $("<td>"+obj_valJg+"</td>");
+			var $td3 = $("<td>"+obj_valNum+"</td>");
+			var $td4 = $("<td></td>");
+			
+			//创建连个按钮
+			var $btnDelete = $("<button>删除</button>")
+			$btnDelete.click(function () {
+				$btnDelete.parent().parent().remove();
+			});
+
+
+			var $btnUpdate = $("<button>修改</button>");
+			$btnUpdate.click(function (evernt) {
+				var $tdcount = $btnUpdate.parent().prev();
+				if ($(this).html()=="修改") {
+					$(this).html("确定");
+						//通过修改按钮找到td
+					
+					//创建两个按钮;
+					var $btnMinus=$("<button>-</button>");
+
+					//为btnMInus绑定click事件
+					$btnMinus.click(function () {
+						var textCount=$(this).next();
+						textCount.val(textCount.val()-1);
+
+					})
+					var $textCount=$("<input type='text'>");
+					$textCount.val($tdcount.text());
+					var $btnAdd=$("<button>+</button>");
+					$btnAdd.click(function () {
+						var textCount=$(this).prev();
+						textCount.val(Number(textCount.val())+1);
+
+					})
+					$tdcount.empty();
+					$tdcount.append($btnMinus).append($textCount).append($btnAdd);
+				}else{
+					//执行确定操作
+					$(this).html("修改")
+					var value = $tdcount.children("input").val();
+					$tdcount.html(value);
+				}
+				
+			})
+
+
+
+			//把两个按钮添加到第四个td中
+			$td4.append($btnUpdate);
+			$td4.append($btnDelete);
+
+			//添加一个tr标签
+			var $tr = $("<tr></tr>");
+			$tr.attr("id","ttr");
+
+			//将四个td标签添加到tr中
+			// $tr.append($td1)
+			// $tr.append($td2)
+			// $tr.append($td3)
+			// $tr.append($td4)
+			$tr.append($td1).append($td2).append($td3).append($td4);
+			$("#tbody1").append($tr);
+			
+			
+
+		}
+	</script>
+		
+	</table>
+</body>
+</html>

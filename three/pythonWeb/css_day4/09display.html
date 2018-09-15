@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>sco</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		.d1,.d2{
+			width: 200px;
+			height: 200px;
+		}
+		.d1{
+			background: rgba(255,0,0,.5);
+			/*设置元素隐藏*/
+			/*display: none;*/
+			/*visibility: hidden;*/
+			/*转换元素隐藏*/
+			display: inline-block;
+		}
+		.d2{
+			background: green;
+			display: inline-block;
+			opacity: .5;
+		}
+		p{
+
+			width: 150px;
+			height: 100px;
+			background: blue;
+		}
+		.d2p{
+			opacity: 0.9;
+		}
+	</style>
+</head>
+<body>
+	<div class="d1">
+		<p>d1中的子元素</p>
+	</div>
+	<div class="d2">
+		<p class="d2p">d2中的子元素</p>
+	</div>
+</body>
+</html>

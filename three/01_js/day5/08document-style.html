@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>dddd</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		#main{
+			width: 200px;
+			height: 200px;
+			/*border-radius: 5px;*/
+			background: green;
+		}
+		.hide{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div id="main">this is div</div>
+	<button onclick="btnShow();">显示</button>
+	<button onclick="btnHide();">隐藏</button>
+	<button onclick="btnRadius();">边框圆角</button>
+	<script src="common.js"></script>
+	<script type="text/javascript">
+		function btnRadius() {
+			$("main").style.borderRadius = "50%"
+		}
+		function btnHide() {
+			//动态的#main 元素绑定class 属性值为hide
+			// var z = $("main").setAttribute("class","hide")
+			$("main").className="hide"
+		}
+		function btnShow() {
+			// 动态将#main 的class属性清除
+			// $("main").removeAttribute("class")
+			$("main").className = ""
+		}
+	</script>
+</body>
+</html>

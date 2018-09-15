@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>cd</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// 函数：判断否Eric闰年的函数
+	 //    功能：从弹框中录入一个年份
+	 //    返回值：是否为闰年
+		function isRun() {
+			var year = prompt("year");
+			return year%4==0 && year%100 != 0 || year %400==0;
+		}
+		//网页加载的时候就执行调用
+		// console.log(isRun());
+	</script>
+	<button onclick="alert(isRun()),;">判断闰年</button>
+</body>
+</html>

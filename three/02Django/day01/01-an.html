@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ddd</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		div{
+			width: 200px;
+			background: green;
+		}
+	</style>
+	<script src="jquery-1.11.3.js"></script>
+	<script type="text/javascript">
+		$(function () {
+			$("#btnShow").click(function () {
+				$("#main").show(5000);
+			})
+			$("#btnHide").click(function () {
+				$("#main").hide(5000);
+			});
+			$("#btnDown").click(function () {
+				$("#main").slideDown(5000);
+			})
+			$("#btnUp").click(function () {
+				$("#main").slideUp(5000);
+			})
+			$("#btnIn").click(function () {
+				$("#main").fadeIn(5000);
+			})
+			$("#btnOut").click(function () {
+				$("#main").fadeOut(5000);
+			})
+		})
+	</script>
+</head>
+<body>
+	<p>
+		<button id="btnShow">基本显示</button>
+		<button id="btnHide">基本隐藏</button>
+		<button id="btnDown">滑动显示</button>
+		<button id="btnUp">滑动隐藏</button>
+		<button id="btnIn">淡入显示</button>
+		<button id="btnOut">淡出隐藏</button>
+		
+	</p>
+	<div id="main">
+		aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+		aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+		aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+		ggggggggggggggggggggggggggggggggggggggggggggggggg
+		ggggggggggggggggggggggggggggggggggggggggg
+
+
+			ggggggggggggggggggggggggggggggggggggg
+		gggggggggggggggggggggggggggggggggggggggg
+		ggggggggggggggggggggggggggggggggggggggggggggg
+	</div>
+</body>
+</html>

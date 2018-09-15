@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>oo</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function hone1() {
+			var arr1 = ["周杰伦","白百何","刘德华","王宝倩","王宝倩"];
+			var arr2 = [];
+			var input = prompt("输入用户名");
+			for (var i = 0; i < arr1.length; i++) {
+				if (arr1[i]==input){
+					arr2[arr2.length]=i;
+				}
+			}
+			if (arr2.length>0) {
+				console.log("下标为"+arr2)
+			}else{
+				console.log("不存在")
+			}
+		}
+		function sortArr() {
+			var arr = [1024,512,256]
+			console.log("排序后:"+arr)
+			if (arr[0]>arr[1]){
+				arr[0] ^=arr[1];
+				arr[1] ^=arr[0];
+				arr[0] ^=arr[1];
+			}
+			if (arr[1]>arr[2]) {
+				arr[1] ^= arr[2];
+				arr[2] ^= arr[1];
+				arr[1] ^= arr[2];
+			}
+			if (arr[0]>arr[1]){
+				arr[0] ^=arr[1];
+				arr[1] ^=arr[0];
+				arr[0] ^=arr[1];
+			}
+			console.log("排序后:"+arr)
+		}
+		
+	</script>
+	<button onclick="hone1()">select</button>
+	<button onclick="sortArr()">aaaaa</button>
+</body>
+</html>

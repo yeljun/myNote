@@ -1,0 +1,243 @@
+
+1.解析
+	1，数据分类
+		1，结构化数据
+			特点：有固定的格式：HTML,XML,JSON
+		2，非结构化数据
+			图片，视频，音频，这类数据一般存储为二进制
+	2，正则表达式
+		1，使用流程
+			1，创建编译对象：p=re.compile("\d")
+			2, 对字符串进行匹配：result = p.match（“123abc”）
+			3，获取匹配结果：print（result.group()）
+		2,常用的方法：
+			1.match（s）：只匹配字符串的开头，返回对象
+			2，search（s）：从开始往后匹配第一个，匹配到后就返回，返回对象
+			3，group（）：从match和search返回的对象中取值
+			4.findall（s）：全部匹配，返回的是一个列表
+		3.表达式
+			. 任意字符（不能匹配\n）
+			[...] 包含[]内容  a[bcd]e 
+			\d 数字
+			\w 字母 数字 下划线
+			\s 空白字符
+			\S 非空白字符  （\s\S）全匹配
+			*  前一个字符出现0次或多次
+			？ 0或1次
+			+  1次或多次
+			{m} 前一个字符出现m次
+
+			贪婪：整个表达式在匹配成功的情况下，尽可能多的去匹配*
+			非贪婪：整个表达式匹配成功的情况下，尽可能少的取匹配*
+		4.示例：01_re.py
+			<div><p>aaaaaaaa,bbbbbb</p></div>
+			<div><p>cccccccc,dddddd</p></div>
+		5.findall()的分组
+			1,先按整体匹配出来，然后在匹配（）中的内容，如果有2个或者多个（），则以元组方式去显示
+		6.练习
+			<div class="animal">
+				<p class="name">
+					<a title="tiger"></a>
+				</p>
+				<p class="contents">
+					Two tigers two tigers run fast
+				</p>
+			</div>
+			<div class="animal">
+				<p class="name">
+					<a title="Rabbit"></a>
+				</p>
+				<p class="contents">
+					Small white rabbit white and white
+				</p>
+			</div>
+			[("Tiger","Two tigers two tigers run fast"),
+			("Rabbit","Small white rabbit white and white")]
+		1.猫眼电影 --top100榜单
+		2.目标  电影名，主演，上映时间
+		3.步骤
+			1，url
+			2用正则
+
+
+	3，Xpath
+	4，BeautifulSoup
+2.Fiddler抓包工具
+	1，抓包设置
+		1，设置Fiddler抓包工具
+			1.https：Tools -> https --> from browsers only --->actions
+			2.connections:设置端口号 8888
+		2.设置浏览器代理
+			Proxy SwitchOmega-选项 - 新建情景模式 --http 127.0.0.1 8888 -应用
+	2fiddler常用菜单
+		1，Inspectoral：查看抓到包的详细内容
+		2，常用选项
+			1，Headers：客户端发送到服务器的header，包含web客户端信息cookie传输状态
+			2，WebForm:显示请求的POST的数据
+			3，RAW：将整个请求显示为存文本
+3，请求方式及案例
+	1.GET（查询参数都在URL地址中显示）
+	2.POST
+		1.特点：查询参数在Form表单里保存
+		2.使用：
+			urllib.request.urlopen（url,data=Formdata,headers=headers）
+			data:表单数据data必须为bytes类型提交，不能是字典
+		3，案例：
+			有道翻译：
+				1.利用Fiddler抓取工具抓取WebForms里表单数据
+				2.对POST数据进行处理bytes数据类型
+				3，发请求得响应
+		4，json模块
+			json.loads("json格式的字符串")
+				作用：把json格式的字符串转换成字符串
+	3，Cookies模拟登陆
+		1.Coolkie和Session
+			Cookie：通过在客户端记录的信息确定用户身份
+			session：通过在服务器端记录的信息确定用户身份
+		2，案例：使用cookie模拟登陆人人网
+4，requests模块
+	1，安装（）
+		(base)pip3 install requests
+		(base)conda install requests
+	2,常用方法
+		1.get（url，headers=headers）：向网站发起请求，并获取响应对象
+			1.用法：response = requests.get(url,headers=headers)
+			2.response 的属性
+				1，response.text:获取响应内容：获取响应内容（字符串）
+					网站默认返回字符编码：ISO-8859-1
+					手动指定：response.encoding ="utf-8"
+				2. response.content:获取响应内容（bytes）
+					1.应用场景：爬取图片，音频等非结构化数据
+					2.示例：爬取图片
+						1.url
+				3. response.status_code:返回服务器的响应码
+
+svn
+git 是一个开源的分布式版本控制系统工具管理大小项目的代码
+	*分布式管理系统
+	*更多使用在linux下或unix下
+	*更加安全，因为分布式管理
+	*可以衍生更多的工作模式
+	*可以脱网操作，数据同步块
+
+集中式：代码集中管理，有专门的服务器，每次跟新都要从服务器中下载最新内容
+分布式：每个节点都保存有完整的代码，没有专门的服务器，节点之间相互推送下载代码
+安装 sudo apt-get install git
+
+配置工作环境 
+配置工具 ：git config 
+
+配置级别：
+1.系统级别 操作系统中所有用户都可以使用
+	配置用户
+	sudo git config --system user.name Preasca
+	配置文件
+	cat /etc/gitconfig
+2.用户配置
+	使用用户所有的项目都可以使用
+	配置email
+	git config --global user.email Preasca@163.com
+	配置文件
+	cat ~/.gitconfig
+3.配置当前项目仓库
+	配置编译器
+	git config core.editor vim
+	配置文件 .git/config
+
+	仓库：使用git生产的项目目录，可以通过git方便的进行操作，将需要的使用git管理的项目代码放入目录即可管理
+	git init初始化仓库
+
+仓库操作
+	工作区-----》占存区------》仓库
+	初始化仓库
+	git init
+	查看当前工作分支状态
+	git status
+	将工作去的内容同步到暂存区
+	git add files
+	多个文件可以用空格隔开
+	可以添加普通文件和目录
+	*表示所有文件
+	把文件从暂存区删除
+	git rm --cache 文件名
+	把占存区的文件同步到仓库
+	git commit -m “描述”
+
+	查看提交日志
+	git log
+	git log --pretty=oneline 查看简易版日志
+	git diff xxxxx查看工作区文件与仓库区别
+
+	恢复误删文件
+	git checkout 文件名
+	从仓库删除文件
+	git rm 文件名 删除了仓库
+	git mv 文件名   ----- 操作后git commit即可确认更改
+
+	回到上一个版本
+	git reset --hard HEAD^
+	几个^表示上几个版本
+
+	回到指定的版本
+	git reset --hard 854ca76 
+	查看所有的commit信息
+	git reflog
+
+工作去操作
+	放弃工作区修改
+	git checkout -- 文件名 
+	创建临时保存工作区
+	git stash
+
+	查看保存的工作区
+	git stash list
+
+	*应用哪个工作区
+	git stash apply stash@{0}
+	删除工作区
+	git stash drop stash@{0} 删除指定的
+	git stash clear 清空
+
+分支
+	查看当前分支
+	git branch
+	前面的 * 号表示当前正在工作的分支
+	创建分支
+	git branch dev_tom
+	切换到dev_tom分支上
+	git checkout dev_Tom 
+	创建并切换分支
+	git checkout -b dev_jj
+	合并分支
+	git marge dev_Tom
+	删除分支
+	git branch -d dev_Tom
+
+	如果没有合并，则必须用-D删除
+标签管理
+	打标签
+	git tag v1.0 
+		会打在最近的一个commit上
+	查看标签
+	git tag
+	回到标签版本的内容
+	git reset --hard v1.0
+
+	指定的版本上打标签
+	 git tag v1.1 commit_id
+远程仓库
+	
+	mkdir git
+	chown tarena：tarena git
+	cd git
+	git init --bare project.git
+	chown  -R tarena:tarena project.git
+	
+
+
+
+
+
+
+
+

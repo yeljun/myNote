@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>dd</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<div id="poem1">
+		<h1 id="aaa">aaa</h1>
+		<p class="title">aaaaaaaaa</p>
+		<p></p>
+		<p></p>
+		<p></p>
+		
+	</div>
+	<button id="btn_remove">删除</button>
+	<script src="../day7/jquery-1.11.3.js"></script>
+	<script type="text/javascript">
+		$(function () {
+			$("#btn_remove").click(function () {
+				$("p.title").remove();
+			});
+			
+		})
+	</script>
+
+</body>
+</html>
