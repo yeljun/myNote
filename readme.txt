@@ -1,9 +1,1 @@
-11111111111
-
-2222222222
-
-3333333333
-
-4444444444
-
-5555555555
+this is my note,i will write a litter nice things when i have free time
